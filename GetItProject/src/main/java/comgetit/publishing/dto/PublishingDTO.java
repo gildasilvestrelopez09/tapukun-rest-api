@@ -1,6 +1,5 @@
 package comgetit.publishing.dto;
 
-import comgetit.publishing.TimeType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,9 +19,6 @@ public class PublishingDTO {
 
     private int timeRequiredOrOffered;
 
-    @NotNull
-    private TimeType timeType;
-
     @NotBlank
     @Size(min = 10, max = 100)
     private String description;
@@ -30,14 +26,12 @@ public class PublishingDTO {
     public PublishingDTO(@NotBlank String typePublishing,
         @NotNull Long workAreaId, int tariff,
         @Size(min = 10, max = 50) String address, int timeRequiredOrOffered,
-        @NotNull TimeType timeType,
         @NotBlank @Size(min = 10, max = 100) String description) {
         this.typePublishing = typePublishing;
         this.workAreaId = workAreaId;
         this.tariff = tariff;
         this.address = address;
         this.timeRequiredOrOffered = timeRequiredOrOffered;
-        this.timeType = timeType;
         this.description = description;
     }
 
@@ -59,10 +53,6 @@ public class PublishingDTO {
 
     public int getTimeRequiredOrOffered() {
         return timeRequiredOrOffered;
-    }
-
-    public TimeType getTimeType() {
-        return timeType;
     }
 
     public String getDescription() {

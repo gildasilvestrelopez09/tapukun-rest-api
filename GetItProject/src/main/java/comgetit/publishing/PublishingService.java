@@ -32,7 +32,6 @@ public class PublishingService {
         publishing.setTariff(publishingDTO.getTariff());
         publishing.setAddress(publishingDTO.getAddress());
         publishing.setTimeRequiredOrOffered(publishingDTO.getTimeRequiredOrOffered());
-        publishing.setTimeType(publishingDTO.getTimeType());
         publishing.setDescription(publishingDTO.getDescription());
         return publishingRepository.save(publishing);
     }

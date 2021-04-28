@@ -28,8 +28,6 @@ public class Publishing {
 
     private Integer timeRequiredOrOffered;
 
-    private TimeType timeType;
-
     private String description;
 
     public Long getId() {
@@ -46,14 +44,6 @@ public class Publishing {
 
     public void setPublishingType(PublishingType publishingType) {
         this.publishingType = publishingType;
-    }
-
-    public TimeType getTimeType() {
-        return timeType;
-    }
-
-    public void setTimeType(TimeType timeType) {
-        this.timeType = timeType;
     }
 
     public WorkArea getWorkArea() {
