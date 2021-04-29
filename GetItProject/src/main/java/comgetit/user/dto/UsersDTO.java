@@ -1,16 +1,16 @@
 package comgetit.user.dto;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import comgetit.publishing.Publishing;
 import comgetit.workarea.WorkArea;
 
-public class UserDTO {
+public class UsersDTO {
+	
+	private Long id;
 	
 	@NotBlank
 	@NotNull
@@ -39,14 +39,13 @@ public class UserDTO {
     @NotNull
     @Size(min = 8, max = 50)
     private String password;
-    
-    private List<Publishing> publishingList;
 
-	public UserDTO(@NotBlank @NotNull @Size(min = 3, max = 50) String firstname,
+	public UsersDTO(Long id, @NotBlank @NotNull @Size(min = 3, max = 50) String firstname,
 			@NotNull @Size(min = 3, max = 50) String lastname, @NotNull @Size(max = 50) String phone,
 			@NotNull Date birthdate, String address, WorkArea workArea, @NotNull @Size(max = 50) String email,
-			@NotNull @Size(min = 8, max = 50) String password, List<Publishing> publishingList) {
+			@NotNull @Size(min = 8, max = 50) String password) {
 		super();
+		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.phone = phone;
@@ -55,7 +54,14 @@ public class UserDTO {
 		this.workArea = workArea;
 		this.email = email;
 		this.password = password;
-		this.publishingList = publishingList;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstname() {
@@ -98,7 +104,7 @@ public class UserDTO {
 		this.address = address;
 	}
 
-	public WorkArea getIdWorkArea() {
+	public WorkArea getWorkArea() {
 		return workArea;
 	}
 
@@ -121,8 +127,5 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public List<Publishing> getPublishingList() {
-        return publishingList;
-    }
+
 }
