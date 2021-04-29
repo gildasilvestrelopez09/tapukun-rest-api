@@ -1,11 +1,11 @@
 package comgetit.publishing;
 
+import comgetit.user.User;
 import comgetit.workarea.WorkArea;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 public class Publishing {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Enumerated(EnumType.STRING)
@@ -30,59 +29,61 @@ public class Publishing {
 
     private String description;
 
-    public Long getId() {
-        return id;
+    @ManyToOne
+    private User user;
+
+    private Date created;
+
+    protected Publishing() {
     }
 
-    public void setId(Long id) {
+    public Publishing(Long id, PublishingType publishingType, WorkArea workArea,
+        Integer tariff, String address, Integer timeRequiredOrOffered, String description,
+        User user, Date created) {
         this.id = id;
+        this.publishingType = publishingType;
+        this.workArea = workArea;
+        this.tariff = tariff;
+        this.address = address;
+        this.timeRequiredOrOffered = timeRequiredOrOffered;
+        this.description = description;
+        this.user = user;
+        this.created = created;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public PublishingType getPublishingType() {
         return publishingType;
     }
 
-    public void setPublishingType(PublishingType publishingType) {
-        this.publishingType = publishingType;
-    }
-
     public WorkArea getWorkArea() {
         return workArea;
-    }
-
-    public void setWorkArea(WorkArea workArea) {
-        this.workArea = workArea;
     }
 
     public Integer getTariff() {
         return tariff;
     }
 
-    public void setTariff(Integer tariff) {
-        this.tariff = tariff;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public Integer getTimeRequiredOrOffered() {
         return timeRequiredOrOffered;
     }
 
-    public void setTimeRequiredOrOffered(Integer timeRequiredOrOffered) {
-        this.timeRequiredOrOffered = timeRequiredOrOffered;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public User getUser() {
+        return user;
+    }
+
+    public Date getCreated() {
+        return created;
     }
 }

@@ -1,101 +1,112 @@
 package comgetit.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import comgetit.publishing.Publishing;
 import java.util.Date;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name = "Users")
 public class User {
-	 	@Id
-	    private Long id;
-	 
-	 	@Column
-	    private String firstname;
-	 	
-	    @Column
-	    private String lastname;
-	    
-	    @Column
-	    private String phone;
-	    
-	    @Column
-	    @Temporal(TemporalType.DATE)
-	    @JsonFormat(pattern = "yyyy-MM-dd")
-	    private Date birthdate;
-	    
-	    @Column
-	    private String address;
-	    
-	    private Long idWorkArea;
 
-	    @Column
-	    private String email;
+    @Id
+    private Long id;
 
-	    @Column
-	    private String password;
-	    
-	    
+    @Column
+    private String firstname;
 
-		public User(Long id, String firstname, String lastname, String phone, Date birthdate, String address,
-				Long idWorkArea, String email, String password) {
-			super();
-			this.id = id;
-			this.firstname = firstname;
-			this.lastname = lastname;
-			this.phone = phone;
-			this.birthdate = birthdate;
-			this.address = address;
-			this.idWorkArea = idWorkArea;
-			this.email = email;
-			this.password = password;
-		}
+    @Column
+    private String lastname;
 
-		protected User() {}
+    @Column
+    private String phone;
 
-		public Long getId() {
-			return id;
-		}
+    @Column
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date birthdate;
 
+    @Column
+    private String address;
 
-		public String getFirstname() {
-			return firstname;
-		}
+    private Long idWorkArea;
 
-		public String getLastname() {
-			return lastname;
-		}
+    @Column
+    private String email;
 
-		public String getPhone() {
-			return phone;
-		}
+    @Column
+    private String password;
 
-		public Date getBirthdate() {
-			return birthdate;
-		}
+    @OneToMany(mappedBy = "user")
+    private List<Publishing> publishingList;
 
-		public String getAddress() {
-			return address;
-		}
+    public User(Long id, String firstname, String lastname, String phone, Date birthdate,
+        String address,
+        Long idWorkArea, String email, String password,
+        List<Publishing> publishingList) {
+        super();
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.birthdate = birthdate;
+        this.address = address;
+        this.idWorkArea = idWorkArea;
+        this.email = email;
+        this.password = password;
+        this.publishingList = publishingList;
+    }
+
+    protected User() {
+    }
+
+    public Long getId() {
+        return id;
+    }
 
 
-		public Long getIdWorkArea() {
-			return idWorkArea;
-		}
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 
 
-		public String getEmail() {
-			return email;
-		}
+    public Long getIdWorkArea() {
+        return idWorkArea;
+    }
 
-		public String getPassword() {
-			return password;
-		}
-	    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public List<Publishing> getPublishingList() {
+        return publishingList;
+    }
 }
