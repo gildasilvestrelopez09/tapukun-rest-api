@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 public class User {
 
     @Id
+    @Column
     private Long id;
 
     @Column
@@ -36,6 +37,7 @@ public class User {
     @Column
     private String address;
 
+    @Column
     private Long idWorkArea;
 
     @Column
@@ -47,9 +49,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Publishing> publishingList;
 
-    public User(Long id, String firstname, String lastname, String phone, Date birthdate,
-        String address,
-        Long idWorkArea, String email, String password, List<Publishing> publishingList) {
+    public User(Long id, String firstname, String lastname, String phone,
+        Date birthdate, String address, Long idWorkArea, String email,
+        String password, List<Publishing> publishingList) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -69,7 +71,6 @@ public class User {
     public Long getId() {
         return id;
     }
-
 
     public String getFirstname() {
         return firstname;
@@ -91,11 +92,9 @@ public class User {
         return address;
     }
 
-
     public Long getIdWorkArea() {
         return idWorkArea;
     }
-
 
     public String getEmail() {
         return email;
