@@ -49,8 +49,7 @@ public class User {
 
     public User(Long id, String firstname, String lastname, String phone, Date birthdate,
         String address,
-        Long idWorkArea, String email, String password,
-        List<Publishing> publishingList) {
+        Long idWorkArea, String email, String password, List<Publishing> publishingList) {
         super();
         this.id = id;
         this.firstname = firstname;
