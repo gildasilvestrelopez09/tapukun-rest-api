@@ -1,21 +1,19 @@
 package comgetit.user;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "Users")
 public class User {
 	 	@Id
+	 	@Column
 	    private Long id;
 	 
 	 	@Column
@@ -35,6 +33,7 @@ public class User {
 	    @Column
 	    private String address;
 	    
+	    @Column
 	    private Long idWorkArea;
 
 	    @Column
@@ -42,8 +41,6 @@ public class User {
 
 	    @Column
 	    private String password;
-	    
-	    
 
 		public User(Long id, String firstname, String lastname, String phone, Date birthdate, String address,
 				Long idWorkArea, String email, String password) {
@@ -65,7 +62,6 @@ public class User {
 			return id;
 		}
 
-
 		public String getFirstname() {
 			return firstname;
 		}
@@ -86,11 +82,9 @@ public class User {
 			return address;
 		}
 
-
 		public Long getIdWorkArea() {
 			return idWorkArea;
 		}
-
 
 		public String getEmail() {
 			return email;
