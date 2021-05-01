@@ -2,11 +2,13 @@ package comgetit.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import comgetit.publishing.Publishing;
+import comgetit.workarea.WorkArea;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,8 +39,8 @@ public class User {
     @Column
     private String address;
 
-    @Column
-    private Long idWorkArea;
+    @ManyToOne
+    private WorkArea workArea;
 
     @Column
     private String email;
@@ -50,7 +52,7 @@ public class User {
     private List<Publishing> publishingList;
 
     public User(Long id, String firstname, String lastname, String phone,
-        Date birthdate, String address, Long idWorkArea, String email,
+        Date birthdate, String address, WorkArea workArea, String email,
         String password, List<Publishing> publishingList) {
         super();
         this.id = id;
@@ -59,7 +61,7 @@ public class User {
         this.phone = phone;
         this.birthdate = birthdate;
         this.address = address;
-        this.idWorkArea = idWorkArea;
+        this.workArea = workArea;
         this.email = email;
         this.password = password;
         this.publishingList = publishingList;
@@ -92,8 +94,8 @@ public class User {
         return address;
     }
 
-    public Long getIdWorkArea() {
-        return idWorkArea;
+    public WorkArea getWorkArea() {
+        return workArea;
     }
 
     public String getEmail() {
