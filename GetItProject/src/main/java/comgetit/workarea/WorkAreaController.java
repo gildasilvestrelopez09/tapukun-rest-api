@@ -16,7 +16,7 @@ public class WorkAreaController {
         this.workAreaService = workAreaService;
     }
 
-    @GetMapping("workarea")
+    @GetMapping("workareas")
     public List<WorkAreaDTO> getWorkAreaDTOS() {
         return workAreaService.getWorkAreas();
     }

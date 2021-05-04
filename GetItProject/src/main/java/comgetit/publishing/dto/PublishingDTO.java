@@ -23,16 +23,21 @@ public class PublishingDTO {
     @Size(min = 10, max = 100)
     private String description;
 
+    @NotNull
+    private Long userId;
+
     public PublishingDTO(@NotBlank String typePublishing,
         @NotNull Long workAreaId, int tariff,
         @Size(min = 10, max = 50) String address, int timeRequiredOrOffered,
-        @NotBlank @Size(min = 10, max = 100) String description) {
+        @NotBlank @Size(min = 10, max = 100) String description,
+        @NotNull Long userId) {
         this.typePublishing = typePublishing;
         this.workAreaId = workAreaId;
         this.tariff = tariff;
         this.address = address;
         this.timeRequiredOrOffered = timeRequiredOrOffered;
         this.description = description;
+        this.userId = userId;
     }
 
     public String getTypePublishing() {
@@ -57,5 +62,9 @@ public class PublishingDTO {
 
     public String getDescription() {
         return description;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 }
