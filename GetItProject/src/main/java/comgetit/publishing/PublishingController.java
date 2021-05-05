@@ -20,12 +20,11 @@ public class PublishingController {
         this.publishingService = publishingService;
     }
 
-    @PostMapping("/publishing/{userId}")
+    @PostMapping("/publishing")
     public ResponseEntity<Long> createPublishing(
-        @PathVariable("userId") Long userId,
         @RequestBody @Valid final PublishingDTO publishingDTO
     ) {
-        Publishing publishing = publishingService.createPublishing(userId, publishingDTO);
+        Publishing publishing = publishingService.createPublishing(publishingDTO);
         return new ResponseEntity(publishing.getId(), HttpStatus.CREATED);
     }
 }

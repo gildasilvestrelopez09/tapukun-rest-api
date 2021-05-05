@@ -30,8 +30,9 @@ public class PublishingService {
         this.userRepository = userRepository;
     }
 
-    public Publishing createPublishing(final Long userId, final PublishingDTO publishingDTO) {
-        User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
+    public Publishing createPublishing(final PublishingDTO publishingDTO) {
+        User user = userRepository.findById(publishingDTO.getUserId())
+            .orElseThrow(UserNotFoundException::new);
         WorkArea workArea = workAreaRepository.findById(publishingDTO.getWorkAreaId())
             .orElseThrow(WorkAreNotFoundException::new);
         PublishingType publishingType = convertToTypePublishing(publishingDTO.getTypePublishing());
