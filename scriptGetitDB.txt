@@ -4,16 +4,19 @@ GRANT ALL PRIVILEGES ON * . * TO 'getit'@'localhost';
 USE getitdb;
 
 INSERT INTO work_area(id, name)
-VALUES (1, 'JARDINERIA');
+VALUES (1, 'Jardinería');
 
 INSERT INTO work_area(id, name)
-VALUES (2, 'PINTURA');
+VALUES (2, 'Pintura');
 
 INSERT INTO work_area(id, name)
-VALUES (3, 'PLOMERIA');
+VALUES (3, 'Plomería');
 
 INSERT INTO work_area(id, name)
-VALUES (4, 'ELECTRICIDAD');
+VALUES (4, 'Electricidad');
+
+INSERT INTO work_area(id, name)
+VALUES (5, 'Construcción');
 
 INSERT INTO users(id, address, birthdate, email, firstname, lastname, password, phone, work_area_id)
 VALUES (1, 'Av. Simon Lopez #3432', '2000-09-04', 'diego@gmail.com', 'Diego', 'Vallejos', 'diego12V', '75934733', 2);
