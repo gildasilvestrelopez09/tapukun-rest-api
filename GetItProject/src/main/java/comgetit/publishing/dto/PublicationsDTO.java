@@ -1,8 +1,12 @@
 package comgetit.publishing.dto;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import comgetit.publishing.PublishingType;
 import comgetit.workarea.WorkArea;
@@ -29,8 +33,13 @@ public class PublicationsDTO {
     @Size(min = 10, max = 100)
     private String description;
     
+    @NotNull
+    private Long userId;
+    
+    private Date createdAt;
+    
     public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff, String address,
-                           Integer timeRequiredOrOffered, String description) {
+                           Integer timeRequiredOrOffered, String description, Long userId, Date createdAt) {
         this.adId = id;
         this.type = publishingType.name();
         this.workAreaName = workArea.getName();
@@ -38,7 +47,9 @@ public class PublicationsDTO {
         this.address = address;
         this.requiredTime = timeRequiredOrOffered;
         this.description = description;
-	}
+        this.userId = userId;
+        this.createdAt = createdAt;
+    }
 	
     public Long getAdId() {
         return adId;
@@ -66,5 +77,13 @@ public class PublicationsDTO {
 
     public String getDescription() {
         return description;
+    }
+    
+    public Long getUserId() {
+        return userId;
+    }
+    
+    public Date getCreatedAt() {
+        return createdAt;
     }
 }
