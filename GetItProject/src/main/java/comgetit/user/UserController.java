@@ -26,7 +26,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/registerUser")
+    @PostMapping("/register-user")
     public ResponseEntity<Long> createUser(
         @RequestBody @Valid final UserDTO userDTO
     ) {

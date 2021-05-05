@@ -3,18 +3,23 @@ package comgetit.user.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import comgetit.publishing.Publishing;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import comgetit.workarea.WorkArea;
 
 public class UserDTO {
 	
 	@NotBlank
 	@NotNull
-	@Size(min = 3, max = 50)
+	@Size(min = 3, max = 40)
     private String firstname;
  	
 	@NotNull
@@ -26,36 +31,37 @@ public class UserDTO {
     private String phone;
     
 	@NotNull
+	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthdate;
     
+	@Size(min = 10, max = 50)
     private String address;
     
-    private WorkArea workArea;
+    
+    private Long workAreaId;
 
     @NotNull
     @Size(max = 50)
+    @Email(regexp = ".+@.+\\..+")
     private String email;
 
     @NotNull
     @Size(min = 8, max = 50)
+    @Pattern(regexp="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$")
     private String password;
-    
-    private List<Publishing> publishingList;
 
-	public UserDTO(@NotBlank @NotNull @Size(min = 3, max = 50) String firstname,
-			@NotNull @Size(min = 3, max = 50) String lastname, @NotNull @Size(max = 50) String phone,
-			@NotNull Date birthdate, String address, WorkArea workArea, @NotNull @Size(max = 50) String email,
-			@NotNull @Size(min = 8, max = 50) String password, List<Publishing> publishingList) {
+	public UserDTO(String firstname, String lastname, String phone, Date birthdate, 
+				   String address, Long workAreaId, String email, String password) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.phone = phone;
 		this.birthdate = birthdate;
 		this.address = address;
-		this.workArea = workArea;
+		this.workAreaId = workAreaId;
 		this.email = email;
 		this.password = password;
-		this.publishingList = publishingList;
 	}
 
 	public String getFirstname() {
@@ -98,12 +104,12 @@ public class UserDTO {
 		this.address = address;
 	}
 
-	public WorkArea getIdWorkArea() {
-		return workArea;
+	public Long getWorkAreaId() {
+		return workAreaId;
 	}
 
-	public void setWorkArea(WorkArea workArea) {
-		this.workArea = workArea;
+	public void setWorkArea(Long workAreaId) {
+		this.workAreaId = workAreaId;
 	}
 
 	public String getEmail() {
@@ -121,8 +127,4 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public List<Publishing> getPublishingList() {
-        return publishingList;
-    }
 }

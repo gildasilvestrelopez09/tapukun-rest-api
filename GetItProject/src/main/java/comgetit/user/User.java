@@ -53,7 +53,7 @@ public class User {
 
     public User(Long id, String firstname, String lastname, String phone,
         Date birthdate, String address, WorkArea workArea, String email,
-        String password, List<Publishing> publishingList) {
+        String password) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -64,7 +64,6 @@ public class User {
         this.workArea = workArea;
         this.email = email;
         this.password = password;
-        this.publishingList = publishingList;
     }
 
     protected User() {
