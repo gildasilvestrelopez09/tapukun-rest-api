@@ -1,0 +1,22 @@
+CREATE USER 'getit'@'localhost' IDENTIFIED BY 'getit';
+GRANT ALL PRIVILEGES ON * . * TO 'getit'@'localhost';
+
+USE getitdb;
+
+INSERT INTO work_area(id, name)
+VALUES (1, 'JARDINERIA');
+
+INSERT INTO work_area(id, name)
+VALUES (2, 'PINTURA');
+
+INSERT INTO work_area(id, name)
+VALUES (3, 'PLOMERIA');
+
+INSERT INTO work_area(id, name)
+VALUES (4, 'ELECTRICIDAD');
+
+INSERT INTO users(id, address, birthdate, email, firstname, lastname, password, phone, work_area_id)
+VALUES (1, 'Av. Simon Lopez #3432', '2000-09-04', 'diego@gmail.com', 'Diego', 'Vallejos', 'diego12V', '75934733', 2);
+
+INSERT INTO users(id, address, birthdate, email, firstname, lastname, password, phone, work_area_id)
+VALUES (2, 'Av. America y Libertadores #7634', '1999-02-23', 'santiagoGomez@gmail.com', 'Santiago', 'Gomez', '1234Santi', '67323586', 4);
