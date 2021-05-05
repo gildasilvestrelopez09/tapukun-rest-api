@@ -9,10 +9,10 @@ import comgetit.workarea.WorkArea;
 
 public class PublicationsDTO {
 	
-	@NotNull
+    @NotNull
     private Long adId;
 	
-	@NotBlank
+    @NotBlank
     private String type;
 
     @NotNull
@@ -29,7 +29,7 @@ public class PublicationsDTO {
     @Size(min = 10, max = 100)
     private String description;
     
-	public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff2, String address2,
+    public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff2, String address2,
 			Integer timeRequiredOrOffered2, String description2) {
 		this.adId = id;
 		this.type = publishingType.name();

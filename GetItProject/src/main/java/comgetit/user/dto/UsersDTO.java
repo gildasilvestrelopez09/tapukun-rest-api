@@ -6,8 +6,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import comgetit.workarea.WorkArea;
-
 public class UsersDTO {
 	
 	private Long id;
@@ -28,22 +26,18 @@ public class UsersDTO {
 	@NotNull
     private Date birthdate;
     
+	@NotNull
     private String address;
     
-    private WorkArea workArea;
+	@NotNull
+    private Long workAreaId;
 
     @NotNull
     @Size(max = 50)
     private String email;
 
-    @NotNull
-    @Size(min = 8, max = 50)
-    private String password;
-
-	public UsersDTO(Long id, @NotBlank @NotNull @Size(min = 3, max = 50) String firstname,
-			@NotNull @Size(min = 3, max = 50) String lastname, @NotNull @Size(max = 50) String phone,
-			@NotNull Date birthdate, String address, WorkArea workArea, @NotNull @Size(max = 50) String email,
-			@NotNull @Size(min = 8, max = 50) String password) {
+	public UsersDTO(Long id, String firstname, String lastname, String phone, Date birthdate,
+					String address, Long workAreaId, String email) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -51,9 +45,8 @@ public class UsersDTO {
 		this.phone = phone;
 		this.birthdate = birthdate;
 		this.address = address;
-		this.workArea = workArea;
+		this.workAreaId = workAreaId;
 		this.email = email;
-		this.password = password;
 	}
 
 	public Long getId() {
@@ -104,12 +97,12 @@ public class UsersDTO {
 		this.address = address;
 	}
 
-	public WorkArea getWorkArea() {
-		return workArea;
+	public Long getWorkAreaId() {
+		return workAreaId;
 	}
 
-	public void setWorkArea(WorkArea workArea) {
-		this.workArea = workArea;
+	public void setWorkAreaId(Long workAreaId) {
+		this.workAreaId = workAreaId;
 	}
 
 	public String getEmail() {
@@ -119,13 +112,4 @@ public class UsersDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 }

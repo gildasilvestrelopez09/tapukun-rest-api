@@ -41,8 +41,7 @@ public class UserService {
         return userRepository.findAll().stream()
             .map(user -> new UsersDTO(user.getId(), user.getFirstname(), 
             	 user.getLastname(), user.getPhone(), user.getBirthdate(), 
-            	 user.getAddress(), user.getWorkArea(), user.getEmail(),
-            	 user.getPassword()))
+            	 user.getAddress(), user.getWorkArea().getId(), user.getEmail()))
             		.collect(Collectors.toList());
     }
 }
