@@ -1,6 +1,5 @@
 package comgetit.workarea;
 
-import comgetit.workarea.WorkAreaRepository;
 import comgetit.workarea.dto.WorkAreaDTO;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +18,7 @@ public class WorkAreaService {
 
     public List<WorkAreaDTO> getWorkAreas() {
         return workAreaRepository.findAll().stream()
-            .map((workArea -> new WorkAreaDTO(workArea.getName())))
+            .map((workArea -> new WorkAreaDTO(workArea.getId(), workArea.getName())))
             .collect(Collectors.toList());
     }
 }
