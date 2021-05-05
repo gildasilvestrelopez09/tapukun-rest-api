@@ -29,22 +29,22 @@ public class PublicationsDTO {
     @Size(min = 10, max = 100)
     private String description;
     
-    public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff2, String address2,
-			Integer timeRequiredOrOffered2, String description2) {
-		this.adId = id;
-		this.type = publishingType.name();
+    public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff, String address,
+                           Integer timeRequiredOrOffered, String description) {
+        this.adId = id;
+        this.type = publishingType.name();
         this.workAreaName = workArea.getName();
-        this.fee = tariff2;
-        this.address = address2;
-        this.requiredTime = timeRequiredOrOffered2;
-        this.description = description2;
+        this.fee = tariff;
+        this.address = address;
+        this.requiredTime = timeRequiredOrOffered;
+        this.description = description;
 	}
 	
-	public Long getAdId() {
+    public Long getAdId() {
         return adId;
     }
-	
-	public String getType() {
+
+    public String getType() {
         return type;
     }
 

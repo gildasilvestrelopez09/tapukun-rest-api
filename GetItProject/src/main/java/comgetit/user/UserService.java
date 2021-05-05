@@ -17,10 +17,10 @@ import comgetit.workarea.exception.WorkAreNotFoundException;
 @Service
 public class UserService {
 
-	private final UserRepository userRepository;
-	private final WorkAreaRepository workAreaRepository;
+    private final UserRepository userRepository;
+    private final WorkAreaRepository workAreaRepository;
 	
-	@Autowired
+    @Autowired
     public UserService(UserRepository userRepository, WorkAreaRepository workAreaRepository) {
         this.userRepository = userRepository;
         this.workAreaRepository = workAreaRepository;
@@ -30,18 +30,18 @@ public class UserService {
 	 WorkArea workAreaId = workAreaRepository.findById(userDTO.getWorkAreaId())
             .orElseThrow(WorkAreNotFoundException::new);
         User user = new User(UUID.randomUUID().getMostSignificantBits(),
-        				     userDTO.getFirstname(), userDTO.getLastname(),
-        					 userDTO.getPhone(), userDTO.getBirthdate(),
-        					 userDTO.getAddress(), workAreaId,
-        					 userDTO.getEmail(), userDTO.getPassword());
+                             userDTO.getFirstname(), userDTO.getLastname(),
+                             userDTO.getPhone(), userDTO.getBirthdate(),
+                             userDTO.getAddress(), workAreaId,
+                             userDTO.getEmail(), userDTO.getPassword());
         return userRepository.save(user);
     }
 	
-	public List<UsersDTO> getAllUsers() {
+    public List<UsersDTO> getAllUsers() {
         return userRepository.findAll().stream()
             .map(user -> new UsersDTO(user.getId(), user.getFirstname(), 
-            	 user.getLastname(), user.getPhone(), user.getBirthdate(), 
-            	 user.getAddress(), user.getWorkArea().getId(), user.getEmail()))
-            		.collect(Collectors.toList());
+                 user.getLastname(), user.getPhone(), user.getBirthdate(), 
+                 user.getAddress(), user.getWorkArea().getId(), user.getEmail()))
+                 .collect(Collectors.toList());
     }
 }

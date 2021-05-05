@@ -19,7 +19,7 @@ import comgetit.user.dto.UsersDTO;
 @RestController
 public class UserController {
 	
-	private UserService userService;
+    private UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -36,7 +36,6 @@ public class UserController {
     
     @GetMapping("/users")
     public List<UsersDTO> getAllUsers() {
-        return userService.getAllUsers();
+       return userService.getAllUsers();
     }
-
 }
