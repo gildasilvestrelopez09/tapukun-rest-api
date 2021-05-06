@@ -59,7 +59,7 @@ public class PublishingService {
             .map(publication -> new PublicationsDTO(publication.getId(), publication.getPublishingType(), 
                                 publication.getWorkArea(), publication.getTariff(),
                                 publication.getAddress(), publication.getTimeRequiredOrOffered(), 
-                                publication.getDescription(), publication.getUser().getId(), publication.getCreated()))
+                                publication.getDescription(), publication.getUser(), publication.getCreated()))
             .collect(Collectors.toList());
     }
 }

@@ -34,12 +34,12 @@ public class PublicationsDTO {
     private String description;
     
     @NotNull
-    private Long userId;
+    private comgetit.user.User user;
     
     private Date createdAt;
     
     public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff, String address,
-                           Integer timeRequiredOrOffered, String description, Long userId, Date createdAt) {
+                           Integer timeRequiredOrOffered, String description, comgetit.user.User user, Date createdAt) {
         this.adId = id;
         this.type = publishingType.name();
         this.workAreaName = workArea.getName();
@@ -47,7 +47,7 @@ public class PublicationsDTO {
         this.address = address;
         this.requiredTime = timeRequiredOrOffered;
         this.description = description;
-        this.userId = userId;
+        this.user = user;
         this.createdAt = createdAt;
     }
 	
@@ -79,8 +79,8 @@ public class PublicationsDTO {
         return description;
     }
     
-    public Long getUserId() {
-        return userId;
+    public comgetit.user.User getUser() {
+        return user;
     }
     
     public Date getCreatedAt() {
