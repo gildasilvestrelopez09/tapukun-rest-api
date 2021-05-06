@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class WorkArea implements Serializable {
 
@@ -17,9 +19,11 @@ public class WorkArea implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "workArea")
+    @JsonIgnore
     private List<Publishing> publishingList;
 
     @OneToMany(mappedBy = "workArea")
+    @JsonIgnore
     private List<User> users;
 
     protected WorkArea() {

@@ -1,6 +1,7 @@
 package comgetit.user;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,9 @@ public class UserService {
                  user.getLastname(), user.getPhone(), user.getBirthdate(), 
                  user.getAddress(), user.getWorkArea().getId(), user.getEmail()))
                  .collect(Collectors.toList());
+    }
+    
+    public Object getUser(long id) {
+        return userRepository.findById(id);
     }
 }
