@@ -27,7 +27,7 @@ public class UserService {
     }
 	
 	public User createUser(final UserDTO userDTO) {  
-	 WorkArea workAreaId = workAreaRepository.findById(userDTO.getWorkAreaId())
+	    WorkArea workAreaId = workAreaRepository.findById(userDTO.getWorkAreaId())
             .orElseThrow(WorkAreNotFoundException::new);
         User user = new User(UUID.randomUUID().getMostSignificantBits(),
                              userDTO.getFirstname(), userDTO.getLastname(),

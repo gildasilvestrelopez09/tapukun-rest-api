@@ -57,11 +57,9 @@ public class PublishingService {
     public List<PublicationsDTO> getAllPublications() {
         return publishingRepository.findAll().stream()
             .map(publication -> new PublicationsDTO(publication.getId(), publication.getPublishingType(), 
-            					publication.getWorkArea(), publication.getTariff(),
-            					publication.getAddress(), publication.getTimeRequiredOrOffered(), 
-            					publication.getDescription()))
-            		.collect(Collectors.toList());
-    }
-    
-   
+                                publication.getWorkArea(), publication.getTariff(),
+                                publication.getAddress(), publication.getTimeRequiredOrOffered(), 
+                                publication.getDescription()))
+                 .collect(Collectors.toList());
+    } 
 }
