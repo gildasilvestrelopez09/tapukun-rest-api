@@ -11,7 +11,7 @@ public class GetItProjectApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(GetItProjectApplication.class, args);
-    }
+	}
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
