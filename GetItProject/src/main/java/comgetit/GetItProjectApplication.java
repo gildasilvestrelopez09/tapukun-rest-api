@@ -11,7 +11,7 @@ public class GetItProjectApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(GetItProjectApplication.class, args);
-	}
+    }
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
@@ -19,7 +19,7 @@ public class GetItProjectApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**").allowedOrigins("http://localhost:4200");
-			}
-		};
-	}
+		    }
+	    };
+    }
 }

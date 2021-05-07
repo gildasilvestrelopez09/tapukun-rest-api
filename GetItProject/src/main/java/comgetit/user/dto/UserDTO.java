@@ -2,7 +2,6 @@ package comgetit.user.dto;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -10,9 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import comgetit.workarea.WorkArea;
 
 public class UserDTO {
@@ -38,7 +35,7 @@ public class UserDTO {
     @Size(min = 10, max = 50)
     private String address;
     
-    
+    @NotNull
     private Long workAreaId;
 
     @NotNull
@@ -53,15 +50,15 @@ public class UserDTO {
 
     public UserDTO(String firstname, String lastname, String phone, Date birthdate, 
                    String address, Long workAreaId, String email, String password) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.phone = phone;
-		this.birthdate = birthdate;
-		this.address = address;
-		this.workAreaId = workAreaId;
-		this.email = email;
-		this.password = password;
-	}
+        this.firstname = firstname;
+        this.lastname = lastname;
+	    this.phone = phone;
+	    this.birthdate = birthdate;
+	    this.address = address;
+	    this.workAreaId = workAreaId;
+	    this.email = email;
+        this.password = password;
+    }
 
     public String getFirstname() {
 	    return firstname;
@@ -97,7 +94,7 @@ public class UserDTO {
 
     public String getAddress() {
         return address;
-	}
+    }
 
     public void setAddress(String address) {
         this.address = address;
