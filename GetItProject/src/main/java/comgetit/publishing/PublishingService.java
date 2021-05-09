@@ -1,5 +1,6 @@
 package comgetit.publishing;
 
+import comgetit.publishing.dto.PublicationsDTO;
 import comgetit.publishing.dto.PublishingDTO;
 import comgetit.publishing.exception.PublishingTypeException;
 import comgetit.user.User;
@@ -10,6 +11,8 @@ import comgetit.workarea.WorkAreaRepository;
 import comgetit.workarea.exception.WorkAreNotFoundException;
 import java.util.Date;
 import java.util.UUID;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,4 +53,13 @@ public class PublishingService {
             throw new PublishingTypeException(typePublishing);
         }
     }
+    
+    public List<PublicationsDTO> getAllPublications() {
+        return publishingRepository.findAll().stream()
+            .map(publication -> new PublicationsDTO(publication.getId(), publication.getPublishingType(), 
+                                publication.getWorkArea(), publication.getTariff(),
+                                publication.getAddress(), publication.getTimeRequiredOrOffered(), 
+                                publication.getDescription()))
+                 .collect(Collectors.toList());
+    } 
 }

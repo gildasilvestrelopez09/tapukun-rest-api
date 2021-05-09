@@ -40,7 +40,7 @@ public class PublishingDTO {
         this.userId = userId;
     }
 
-    public String getTypePublishing() {
+	public String getTypePublishing() {
         return typePublishing;
     }
 
