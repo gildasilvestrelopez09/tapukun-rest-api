@@ -6,7 +6,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import comgetit.publishing.PublishingType;
 import comgetit.user.dto.UserDTO;
 import comgetit.user.dto.UsersDTO;
 import comgetit.workarea.WorkArea;
@@ -43,8 +42,8 @@ public class UserService {
                  user.getAddress(), user.getWorkArea().getId(), user.getEmail()))
                  .collect(Collectors.toList());
     }
-    
-    public Object getUser(long id) {
+
+    public Optional<User> getUser(long id) {
         return userRepository.findById(id);
     }
 }

@@ -8,7 +8,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
