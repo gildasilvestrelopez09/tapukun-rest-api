@@ -63,7 +63,7 @@ public class PublishingService {
     public List<PublicationsDTO> searchByWorkArea(String workAreaName) {
         WorkArea workArea = workAreaRepository.findByName(workAreaName)
             .orElseThrow(WorkAreNotFoundException::new);
-        return publishingRepository.findAllByWorkArea(workArea)
+        return publishingRepository.findAllByWorkAreaOrderByCreatedDesc(workArea)
             .stream().map(PublicationsDTO::new)
             .collect(Collectors.toList());
     }
