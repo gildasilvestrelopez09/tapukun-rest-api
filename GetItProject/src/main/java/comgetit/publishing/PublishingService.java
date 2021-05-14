@@ -10,8 +10,8 @@ import comgetit.workarea.WorkArea;
 import comgetit.workarea.WorkAreaRepository;
 import comgetit.workarea.exception.WorkAreNotFoundException;
 import java.util.Date;
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,13 +53,18 @@ public class PublishingService {
             throw new PublishingTypeException(typePublishing);
         }
     }
-    
+
     public List<PublicationsDTO> getAllPublications() {
         return publishingRepository.findAll().stream()
-            .map(publication -> new PublicationsDTO(publication.getId(), publication.getPublishingType(), 
-                                publication.getWorkArea(), publication.getTariff(),
-                                publication.getAddress(), publication.getTimeRequiredOrOffered(), 
-                                publication.getDescription(), publication.getUser(), publication.getCreated()))
+            .map(PublicationsDTO::new)
+            .collect(Collectors.toList());
+    }
+
+    public List<PublicationsDTO> searchByWorkArea(String workAreaName) {
+        WorkArea workArea = workAreaRepository.findByName(workAreaName)
+            .orElseThrow(WorkAreNotFoundException::new);
+        return publishingRepository.findAllByWorkArea(workArea)
+            .stream().map(PublicationsDTO::new)
             .collect(Collectors.toList());
     }
 }

@@ -1,18 +1,17 @@
 package comgetit.publishing.dto;
 
+import comgetit.publishing.Publishing;
+import comgetit.user.dto.UserDTO;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import comgetit.publishing.PublishingType;
-import comgetit.user.User;
-import comgetit.workarea.WorkArea;
 
 public class PublicationsDTO {
-	
+
     @NotNull
     private Long adId;
-	
+
     @NotBlank
     private String type;
 
@@ -29,25 +28,29 @@ public class PublicationsDTO {
     @NotBlank
     @Size(min = 10, max = 100)
     private String description;
-    
+
     @NotNull
-    private User user;
-    
+    private UserDTO user;
+
     private Date createdAt;
-    
-    public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff, String address,
-                           Integer timeRequiredOrOffered, String description, User user, Date createdAt) {
-        this.adId = id;
-        this.type = publishingType.name();
-        this.workAreaName = workArea.getName();
-        this.fee = tariff;
-        this.address = address;
-        this.requiredTime = timeRequiredOrOffered;
-        this.description = description;
-        this.user = user;
-        this.createdAt = createdAt;
+
+    public PublicationsDTO(final Publishing publishing) {
+        this.adId = publishing.getId();
+        this.type = publishing.getPublishingType().name();
+        this.workAreaName = publishing.getWorkArea().getName();
+        this.fee = publishing.getTariff();
+        this.address = publishing.getAddress();
+        this.requiredTime = publishing.getTimeRequiredOrOffered();
+        this.description = publishing.getDescription();
+        this.createdAt = publishing.getCreated();
+        this.user = new UserDTO(publishing.getUser().getFirstname(),
+            publishing.getUser().getLastname()
+            , publishing.getUser().getPhone(), publishing.getUser().getBirthdate()
+            , publishing.getUser().getAddress()
+            , publishing.getUser().getWorkArea().getId(), publishing.getUser().getEmail()
+            , publishing.getUser().getAddress());
     }
-	
+
     public Long getAdId() {
         return adId;
     }
@@ -75,11 +78,11 @@ public class PublicationsDTO {
     public String getDescription() {
         return description;
     }
-    
-    public User getUser() {
+
+    public UserDTO getUser() {
         return user;
     }
-    
+
     public Date getCreatedAt() {
         return createdAt;
     }

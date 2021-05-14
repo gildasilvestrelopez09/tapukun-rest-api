@@ -1,0 +1,8 @@
+{
+ "typo": "DEMAND", // 'DEMAND', 'OFFER'
+ "workArea": 1,
+ "tariff": 12,//Solo entero o con decimales
+ "address": "Av. America y Melchor Perez",
+ "timeRequiredOrOffered": "10",//Horas, Minutos?
+ "description": "Nueva Publicacion"
+}
