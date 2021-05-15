@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Publishing {
@@ -19,6 +20,7 @@ public class Publishing {
     private PublishingType publishingType;
 
     @ManyToOne
+    @JsonIgnore
     private WorkArea workArea;
 
     private Integer tariff;
@@ -30,6 +32,7 @@ public class Publishing {
     private String description;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     private Date created;

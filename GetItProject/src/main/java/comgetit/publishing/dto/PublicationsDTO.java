@@ -1,10 +1,11 @@
 package comgetit.publishing.dto;
 
+import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import comgetit.publishing.PublishingType;
+import comgetit.user.User;
 import comgetit.workarea.WorkArea;
 
 public class PublicationsDTO {
@@ -29,8 +30,13 @@ public class PublicationsDTO {
     @Size(min = 10, max = 100)
     private String description;
     
+    @NotNull
+    private User user;
+    
+    private Date createdAt;
+    
     public PublicationsDTO(Long id, PublishingType publishingType, WorkArea workArea, Integer tariff, String address,
-                           Integer timeRequiredOrOffered, String description) {
+                           Integer timeRequiredOrOffered, String description, User user, Date createdAt) {
         this.adId = id;
         this.type = publishingType.name();
         this.workAreaName = workArea.getName();
@@ -38,7 +44,9 @@ public class PublicationsDTO {
         this.address = address;
         this.requiredTime = timeRequiredOrOffered;
         this.description = description;
-	}
+        this.user = user;
+        this.createdAt = createdAt;
+    }
 	
     public Long getAdId() {
         return adId;
@@ -66,5 +74,13 @@ public class PublicationsDTO {
 
     public String getDescription() {
         return description;
+    }
+    
+    public User getUser() {
+        return user;
+    }
+    
+    public Date getCreatedAt() {
+        return createdAt;
     }
 }

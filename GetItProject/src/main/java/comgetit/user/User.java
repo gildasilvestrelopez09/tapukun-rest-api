@@ -1,6 +1,8 @@
 package comgetit.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import comgetit.publishing.Publishing;
 import comgetit.workarea.WorkArea;
 import java.util.Date;
@@ -46,9 +48,11 @@ public class User {
     private String email;
 
     @Column
+    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Publishing> publishingList;
 
     public User(Long id, String firstname, String lastname, String phone,

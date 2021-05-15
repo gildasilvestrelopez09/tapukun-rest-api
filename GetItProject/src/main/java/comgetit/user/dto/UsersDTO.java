@@ -29,7 +29,6 @@ public class UsersDTO {
     @NotNull
     private String address;
     
-    @NotNull
     private Long workAreaId;
 
     @NotNull
