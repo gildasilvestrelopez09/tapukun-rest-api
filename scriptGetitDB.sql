@@ -1,4 +1,4 @@
-﻿CREATE USER 'getit'@'localhost' IDENTIFIED BY 'getit';
+CREATE USER 'getit'@'localhost' IDENTIFIED BY 'getit';
 GRANT ALL PRIVILEGES ON * . * TO 'getit'@'localhost';
 
 USE getitdb;
@@ -40,9 +40,9 @@ SET GLOBAL event_scheduler = ON;
 
 DELIMITER $$
 
-CREATE EVENT IF NOT EXISTS event_monthly
+CREATE EVENT IF NOT EXISTS event_daily
     ON SCHEDULE
-        EVERY 1 MONTH
+        EVERY 1 DAY
     DO
     BEGIN
         DELETE FROM publishing WHERE UNIX_TIMESTAMP(`created`) < (UNIX_TIMESTAMP()-720*3600);
