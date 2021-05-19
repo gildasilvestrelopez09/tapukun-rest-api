@@ -4,10 +4,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class PublishingDTO {
+public class PublicationCreationDTO {
 
     @NotBlank
-    private String typePublishing;
+    private String typePublication;
 
     @NotNull
     private Long workAreaId;
@@ -26,12 +26,12 @@ public class PublishingDTO {
     @NotNull
     private Long userId;
 
-    public PublishingDTO(@NotBlank String typePublishing,
+    public PublicationCreationDTO(@NotBlank String typePublication,
         @NotNull Long workAreaId, int tariff,
         @Size(min = 10, max = 50) String address, int timeRequiredOrOffered,
         @NotBlank @Size(min = 10, max = 100) String description,
         @NotNull Long userId) {
-        this.typePublishing = typePublishing;
+        this.typePublication = typePublication;
         this.workAreaId = workAreaId;
         this.tariff = tariff;
         this.address = address;
@@ -40,8 +40,8 @@ public class PublishingDTO {
         this.userId = userId;
     }
 
-	public String getTypePublishing() {
-        return typePublishing;
+	public String getTypePublication() {
+        return typePublication;
     }
 
     public Long getWorkAreaId() {

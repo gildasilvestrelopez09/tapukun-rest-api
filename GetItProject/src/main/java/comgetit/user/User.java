@@ -3,7 +3,7 @@ package comgetit.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import comgetit.publishing.Publishing;
+import comgetit.publishing.Publication;
 import comgetit.workarea.WorkArea;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +53,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
-    private List<Publishing> publishingList;
+    private List<Publication> publicationList;
 
     public User(Long id, String firstname, String lastname, String phone,
         Date birthdate, String address, WorkArea workArea, String email,
@@ -109,7 +109,7 @@ public class User {
         return password;
     }
 
-    public List<Publishing> getPublishingList() {
-        return publishingList;
+    public List<Publication> getPublishingList() {
+        return publicationList;
     }
 }

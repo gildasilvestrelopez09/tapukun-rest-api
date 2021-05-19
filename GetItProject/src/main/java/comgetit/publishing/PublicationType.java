@@ -1,6 +1,6 @@
 package comgetit.publishing;
 
-public enum PublishingType {
+public enum PublicationType {
     DEMAND,
     OFFER
 }
