@@ -1,4 +1,4 @@
-CREATE USER 'getit'@'localhost' IDENTIFIED BY 'getit';
+﻿CREATE USER 'getit'@'localhost' IDENTIFIED BY 'getit';
 GRANT ALL PRIVILEGES ON * . * TO 'getit'@'localhost';
 
 USE getitdb;
@@ -35,3 +35,17 @@ VALUES (5, 'Av. Santa Cruz #764', '2021-03-20', 'Construcción y montaje de estr
 
 INSERT INTO publishing(id, address, created, description, publishing_type, tariff, time_required_or_offered, user_id, work_area_id)
 VALUES (6, 'Empresa de limpieza requiere personal con experiencia en lavado de alfombras y otros, que sepa utilizar maquinas, con preferencia varón.', 'Demand', 2100, 'tiempo completo', 1, 1);
+
+SET GLOBAL event_scheduler = ON;
+
+DELIMITER $$
+
+CREATE EVENT IF NOT EXISTS event_monthly
+    ON SCHEDULE
+        EVERY 1 MONTH
+    DO
+    BEGIN
+        DELETE FROM publishing WHERE UNIX_TIMESTAMP(`created`) < (UNIX_TIMESTAMP()-720*3600);
+    END $$
+
+DELIMITER ;
