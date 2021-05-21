@@ -1,4 +1,4 @@
-package comgetit.publishing.dto;
+package comgetit.publication.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

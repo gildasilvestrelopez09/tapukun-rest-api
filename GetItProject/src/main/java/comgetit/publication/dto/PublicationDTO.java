@@ -1,6 +1,6 @@
-package comgetit.publishing.dto;
+package comgetit.publication.dto;
 
-import comgetit.publishing.Publication;
+import comgetit.publication.Publication;
 import comgetit.user.dto.UserDTO;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
@@ -36,7 +36,7 @@ public class PublicationDTO {
 
     public PublicationDTO(final Publication publication) {
         this.adId = publication.getId();
-        this.type = publication.getPublishingType().name();
+        this.type = publication.getPublicationType().name();
         this.workAreaName = publication.getWorkArea().getName();
         this.fee = publication.getTariff();
         this.address = publication.getAddress();

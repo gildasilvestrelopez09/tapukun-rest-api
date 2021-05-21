@@ -1,4 +1,4 @@
-package comgetit.publishing;
+package comgetit.publication;
 
 import comgetit.user.User;
 import comgetit.workarea.WorkArea;
@@ -58,7 +58,7 @@ public class Publication {
         return id;
     }
 
-    public PublicationType getPublishingType() {
+    public PublicationType getPublicationType() {
         return publicationType;
     }
 

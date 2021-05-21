@@ -1,4 +1,4 @@
-package comgetit.publishing;
+package comgetit.publication;
 
 import comgetit.workarea.WorkArea;
 import java.util.List;

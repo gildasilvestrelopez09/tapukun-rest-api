@@ -1,4 +1,4 @@
-package comgetit.publishing;
+package comgetit.publication;
 
 public enum PublicationType {
     DEMAND,

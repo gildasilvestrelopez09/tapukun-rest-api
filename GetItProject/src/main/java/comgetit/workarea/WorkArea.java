@@ -1,6 +1,6 @@
 package comgetit.workarea;
 
-import comgetit.publishing.Publication;
+import comgetit.publication.Publication;
 import comgetit.user.User;
 import java.io.Serializable;
 import java.util.List;
@@ -44,7 +44,7 @@ public class WorkArea implements Serializable {
         return name;
     }
 
-    public List<Publication> getPublishingList() {
+    public List<Publication> getPublicationList() {
         return publicationList;
     }
 

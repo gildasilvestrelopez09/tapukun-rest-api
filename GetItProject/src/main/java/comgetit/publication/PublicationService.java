@@ -1,8 +1,8 @@
-package comgetit.publishing;
+package comgetit.publication;
 
-import comgetit.publishing.dto.PublicationDTO;
-import comgetit.publishing.dto.PublicationCreationDTO;
-import comgetit.publishing.exception.PublishingTypeException;
+import comgetit.publication.dto.PublicationDTO;
+import comgetit.publication.dto.PublicationCreationDTO;
+import comgetit.publication.exception.PublicationTypeException;
 import comgetit.user.User;
 import comgetit.user.UserRepository;
 import comgetit.user.exception.UserNotFoundException;
@@ -33,12 +33,12 @@ public class PublicationService {
         this.userRepository = userRepository;
     }
 
-    public Publication createPublishing(final PublicationCreationDTO publicationCreationDTO) {
+    public Publication createPublication(final PublicationCreationDTO publicationCreationDTO) {
         User user = userRepository.findById(publicationCreationDTO.getUserId())
             .orElseThrow(UserNotFoundException::new);
         WorkArea workArea = workAreaRepository.findById(publicationCreationDTO.getWorkAreaId())
             .orElseThrow(WorkAreNotFoundException::new);
-        PublicationType publicationType = convertToTypePublishing(publicationCreationDTO.getTypePublication());
+        PublicationType publicationType = convertToTypePublication(publicationCreationDTO.getTypePublication());
         Publication publication = new Publication(UUID.randomUUID().getMostSignificantBits()
             , publicationType, workArea, publicationCreationDTO.getTariff(), publicationCreationDTO.getAddress()
             , publicationCreationDTO.getTimeRequiredOrOffered(), publicationCreationDTO.getDescription()
@@ -46,11 +46,11 @@ public class PublicationService {
         return publicationRepository.save(publication);
     }
 
-    public PublicationType convertToTypePublishing(String typePublishing) {
+    public PublicationType convertToTypePublication(String typePublication) {
         try {
-            return PublicationType.valueOf(typePublishing);
+            return PublicationType.valueOf(typePublication);
         } catch (IllegalArgumentException exception) {
-            throw new PublishingTypeException(typePublishing);
+            throw new PublicationTypeException(typePublication);
         }
     }
 

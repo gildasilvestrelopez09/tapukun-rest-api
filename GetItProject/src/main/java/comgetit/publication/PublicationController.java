@@ -1,7 +1,7 @@
-package comgetit.publishing;
+package comgetit.publication;
 
-import comgetit.publishing.dto.PublicationDTO;
-import comgetit.publishing.dto.PublicationCreationDTO;
+import comgetit.publication.dto.PublicationDTO;
+import comgetit.publication.dto.PublicationCreationDTO;
 
 import java.util.List;
 
@@ -25,11 +25,11 @@ public class PublicationController {
         this.publicationService = publicationService;
     }
 
-    @PostMapping("/publishing")
-    public ResponseEntity<Long> createPublishing(
+    @PostMapping("/publication")
+    public ResponseEntity<Long> createPublication(
         @RequestBody @Valid final PublicationCreationDTO publicationCreationDTO
     ) {
-        Publication publication = publicationService.createPublishing(publicationCreationDTO);
+        Publication publication = publicationService.createPublication(publicationCreationDTO);
         return new ResponseEntity(publication.getId(), HttpStatus.CREATED);
     }
     

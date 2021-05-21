@@ -3,7 +3,7 @@ package comgetit.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import comgetit.publishing.Publication;
+import comgetit.publication.Publication;
 import comgetit.workarea.WorkArea;
 import java.util.Date;
 import java.util.List;
@@ -109,7 +109,7 @@ public class User {
         return password;
     }
 
-    public List<Publication> getPublishingList() {
+    public List<Publication> getList() {
         return publicationList;
     }
 }
