@@ -1,6 +1,6 @@
 package comgetit.workarea;
 
-import comgetit.publishing.Publishing;
+import comgetit.publication.Publication;
 import comgetit.user.User;
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +19,7 @@ public class WorkArea implements Serializable {
 
     @OneToMany(mappedBy = "workArea")
     @JsonIgnore
-    private List<Publishing> publishingList;
+    private List<Publication> publicationList;
 
     @OneToMany(mappedBy = "workArea")
     @JsonIgnore
@@ -28,11 +28,11 @@ public class WorkArea implements Serializable {
     protected WorkArea() {
     }
 
-    public WorkArea(Long id, String name, List<Publishing> publishingList,
+    public WorkArea(Long id, String name, List<Publication> publicationList,
         List<User> users) {
         this.id = id;
         this.name = name;
-        this.publishingList = publishingList;
+        this.publicationList = publicationList;
         this.users = users;
     }
 
@@ -44,8 +44,8 @@ public class WorkArea implements Serializable {
         return name;
     }
 
-    public List<Publishing> getPublishingList() {
-        return publishingList;
+    public List<Publication> getPublicationList() {
+        return publicationList;
     }
 
     public List<User> getUsers() {

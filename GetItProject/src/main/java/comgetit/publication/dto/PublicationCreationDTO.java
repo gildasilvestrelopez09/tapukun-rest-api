@@ -1,20 +1,26 @@
-package comgetit.publishing.dto;
+package comgetit.publication.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
-public class PublishingDTO {
+public class PublicationCreationDTO {
 
     @NotBlank
-    private String typePublishing;
+    private String typePublication;
 
     @NotNull
     private Long workAreaId;
 
     private int tariff;
 
-    @Size(min = 10, max = 50)
+    @Pattern(regexp = "^$|^(\\w+){10}$", message = "must be a min size of 10")
+    @Length(max = 50)
     private String address;
 
     private int timeRequiredOrOffered;
@@ -26,12 +32,12 @@ public class PublishingDTO {
     @NotNull
     private Long userId;
 
-    public PublishingDTO(@NotBlank String typePublishing,
+    public PublicationCreationDTO(@NotBlank String typePublication,
         @NotNull Long workAreaId, int tariff,
         @Size(min = 10, max = 50) String address, int timeRequiredOrOffered,
         @NotBlank @Size(min = 10, max = 100) String description,
         @NotNull Long userId) {
-        this.typePublishing = typePublishing;
+        this.typePublication = typePublication;
         this.workAreaId = workAreaId;
         this.tariff = tariff;
         this.address = address;
@@ -40,8 +46,8 @@ public class PublishingDTO {
         this.userId = userId;
     }
 
-	public String getTypePublishing() {
-        return typePublishing;
+	public String getTypePublication() {
+        return typePublication;
     }
 
     public Long getWorkAreaId() {

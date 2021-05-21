@@ -1,4 +1,4 @@
-package comgetit.publishing;
+package comgetit.publication;
 
 import comgetit.user.User;
 import comgetit.workarea.WorkArea;
@@ -11,13 +11,13 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Publishing {
+public class Publication {
 
     @Id
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private PublishingType publishingType;
+    private PublicationType publicationType;
 
     @ManyToOne
     @JsonIgnore
@@ -37,14 +37,14 @@ public class Publishing {
 
     private Date created;
 
-    protected Publishing() {
+    protected Publication() {
     }
 
-    public Publishing(Long id, PublishingType publishingType, WorkArea workArea,
+    public Publication(Long id, PublicationType publicationType, WorkArea workArea,
         Integer tariff, String address, Integer timeRequiredOrOffered, String description,
         User user, Date created) {
         this.id = id;
-        this.publishingType = publishingType;
+        this.publicationType = publicationType;
         this.workArea = workArea;
         this.tariff = tariff;
         this.address = address;
@@ -58,8 +58,8 @@ public class Publishing {
         return id;
     }
 
-    public PublishingType getPublishingType() {
-        return publishingType;
+    public PublicationType getPublicationType() {
+        return publicationType;
     }
 
     public WorkArea getWorkArea() {
