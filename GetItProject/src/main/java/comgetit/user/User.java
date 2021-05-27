@@ -43,6 +43,9 @@ public class User {
 
     @ManyToOne
     private WorkArea workArea;
+ 
+    @Column
+    private int score;
 
     @Column
     private String email;
@@ -56,7 +59,7 @@ public class User {
     private List<Publication> publicationList;
 
     public User(Long id, String firstname, String lastname, String phone,
-        Date birthdate, String address, WorkArea workArea, String email,
+        Date birthdate, String address, WorkArea workArea, int score, String email,
         String password) {
         super();
         this.id = id;
@@ -66,6 +69,7 @@ public class User {
         this.birthdate = birthdate;
         this.address = address;
         this.workArea = workArea;
+        this.score = score;
         this.email = email;
         this.password = password;
     }
@@ -99,6 +103,10 @@ public class User {
 
     public WorkArea getWorkArea() {
         return workArea;
+    }
+    
+    public int getScore() {
+        return score;
     }
 
     public String getEmail() {

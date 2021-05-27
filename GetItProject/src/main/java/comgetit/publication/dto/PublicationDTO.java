@@ -44,11 +44,11 @@ public class PublicationDTO {
         this.description = publication.getDescription();
         this.createdAt = publication.getCreated();
         this.user = new UserDTO(publication.getUser().getFirstname(),
-            publication.getUser().getLastname()
-            , publication.getUser().getPhone(), publication.getUser().getBirthdate()
-            , publication.getUser().getAddress()
-            , publication.getUser().getWorkArea().getId(), publication.getUser().getEmail()
-            , publication.getUser().getAddress());
+            publication.getUser().getLastname(),
+            publication.getUser().getPhone(), publication.getUser().getBirthdate(),
+            publication.getUser().getAddress(), publication.getUser().getWorkArea().getId(),
+            publication.getUser().getScore(), publication.getUser().getEmail(),
+            publication.getUser().getAddress());
     }
 
     public Long getAdId() {

@@ -35,6 +35,8 @@ public class UserDTO {
     
     @NotNull
     private Long workAreaId;
+    
+    private int score;
 
     @NotNull
     @Size(max = 50)
@@ -47,13 +49,14 @@ public class UserDTO {
     private String password;
 
     public UserDTO(String firstname, String lastname, String phone, Date birthdate, 
-                   String address, Long workAreaId, String email, String password) {
+                   String address, Long workAreaId, int score, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
 	    this.phone = phone;
 	    this.birthdate = birthdate;
 	    this.address = address;
 	    this.workAreaId = workAreaId;
+	    this.score = score;
 	    this.email = email;
         this.password = password;
     }
@@ -104,6 +107,14 @@ public class UserDTO {
 
     public void setWorkArea(Long workAreaId) {
         this.workAreaId = workAreaId;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getEmail() {

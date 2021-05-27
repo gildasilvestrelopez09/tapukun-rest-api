@@ -30,7 +30,7 @@ public class UserService {
         User user = new User(UUID.randomUUID().getMostSignificantBits(),
                              userDTO.getFirstname(), userDTO.getLastname(),
                              userDTO.getPhone(), userDTO.getBirthdate(),
-                             userDTO.getAddress(), workAreaId,
+                             userDTO.getAddress(), workAreaId, userDTO.getScore(),
                              userDTO.getEmail(), userDTO.getPassword());
         return userRepository.save(user);
     }
@@ -39,7 +39,7 @@ public class UserService {
         return userRepository.findAll().stream()
             .map(user -> new UsersDTO(user.getId(), user.getFirstname(), 
                  user.getLastname(), user.getPhone(), user.getBirthdate(), 
-                 user.getAddress(), user.getWorkArea().getId(), user.getEmail()))
+                 user.getAddress(), user.getWorkArea().getId(), user.getScore(), user.getEmail()))
                  .collect(Collectors.toList());
     }
 
