@@ -64,6 +64,9 @@ CREATE EVENT IF NOT EXISTS event_daily
     DO
     BEGIN
         DELETE FROM publication WHERE UNIX_TIMESTAMP(`created`) < (UNIX_TIMESTAMP()-720*3600);
+        DELETE FROM photo_gallery WHERE UNIX_TIMESTAMP(`created`) < (UNIX_TIMESTAMP()-2160*3600);
     END $$
 
 DELIMITER ;
+
+DELIMITER $$
