@@ -22,6 +22,8 @@ public class PublicationDTO {
 
     @Size(min = 10, max = 50)
     private String address;
+    
+    private byte[] image;
 
     private int requiredTime;
 
@@ -42,6 +44,7 @@ public class PublicationDTO {
         this.address = publication.getAddress();
         this.requiredTime = publication.getTimeRequiredOrOffered();
         this.description = publication.getDescription();
+        this.image = publication.getImage();
         this.createdAt = publication.getCreated();
         this.user = new UserDTO(publication.getUser().getFirstname(),
             publication.getUser().getLastname(),
@@ -85,5 +88,9 @@ public class PublicationDTO {
 
     public Date getCreatedAt() {
         return createdAt;
+    }
+    
+    public byte[] getImage() {
+    	return image;
     }
 }

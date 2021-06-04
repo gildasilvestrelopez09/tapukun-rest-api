@@ -39,10 +39,11 @@ public class PublicationService {
         WorkArea workArea = workAreaRepository.findById(publicationCreationDTO.getWorkAreaId())
             .orElseThrow(WorkAreNotFoundException::new);
         PublicationType publicationType = convertToTypePublication(publicationCreationDTO.getTypePublication());
+        
         Publication publication = new Publication(UUID.randomUUID().getMostSignificantBits()
             , publicationType, workArea, publicationCreationDTO.getTariff(), publicationCreationDTO.getAddress()
             , publicationCreationDTO.getTimeRequiredOrOffered(), publicationCreationDTO.getDescription()
-            , user, new Date());
+            , user, new Date(), publicationCreationDTO.getImage());
         return publicationRepository.save(publication);
     }
 

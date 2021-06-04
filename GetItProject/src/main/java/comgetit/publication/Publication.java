@@ -30,19 +30,20 @@ public class Publication {
     private Integer timeRequiredOrOffered;
 
     private String description;
-
+    
+    private byte[] image;
     @ManyToOne
     @JsonIgnore
     private User user;
 
-    private Date created;
+    private Date created = new Date();
 
     protected Publication() {
     }
 
     public Publication(Long id, PublicationType publicationType, WorkArea workArea,
         Integer tariff, String address, Integer timeRequiredOrOffered, String description,
-        User user, Date created) {
+        User user, Date created, byte[] image) {
         this.id = id;
         this.publicationType = publicationType;
         this.workArea = workArea;
@@ -52,6 +53,7 @@ public class Publication {
         this.description = description;
         this.user = user;
         this.created = created;
+        this.image = image;
     }
 
     public Long getId() {
@@ -88,5 +90,9 @@ public class Publication {
 
     public Date getCreated() {
         return created;
+    }
+    
+    public byte[] getImage() {
+    	return image;
     }
 }
