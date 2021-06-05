@@ -38,7 +38,7 @@ public class PhotoGalleryService {
         return photoGalleryRepository.save(photoGallery);
     }
 
-    public List<PhotoGalleryDTO> getPhotosGalleryByUserId(String userId) {
+    public List<PhotoGalleryDTO> getPhotosGalleryByUserId(Long userId) {
    
         return photoGalleryRepository.findPhotosGalleryByUserIdOrderByCreatedDesc(userId)
             .stream().map(PhotoGalleryDTO::new)

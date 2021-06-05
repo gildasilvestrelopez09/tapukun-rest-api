@@ -1,6 +1,7 @@
 package comgetit.photogallery.dto;
 import comgetit.photogallery.PhotoGallery;
-import comgetit.user.dto.UserDTO;
+
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,7 +14,7 @@ public class PhotoGalleryDTO {
     private Long photoGalleryId;
     
     @NotNull
-    private byte[] image;
+    private String image;
 
     @NotBlank
     @Size(min = 10, max = 250)
@@ -24,7 +25,7 @@ public class PhotoGalleryDTO {
     public PhotoGalleryDTO(final PhotoGallery photoGallery) {
         this.photoGalleryId = photoGallery.getId();
         this.description = photoGallery.getDescription();
-        this.image = photoGallery.getImage();
+        this.image = new String(photoGallery.getImage(), StandardCharsets.UTF_8);
         this.createdAt = photoGallery.getCreated();
     }
 
@@ -40,7 +41,7 @@ public class PhotoGalleryDTO {
         return createdAt;
     }
     
-    public byte[] getImage() {
+    public String getImage() {
     	return image;
     }
 }
