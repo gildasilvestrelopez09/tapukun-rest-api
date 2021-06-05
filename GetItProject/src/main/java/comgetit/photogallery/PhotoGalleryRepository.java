@@ -1,5 +1,10 @@
 package comgetit.photogallery;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class PhotoGalleryRepository {
+@Repository
+public interface PhotoGalleryRepository extends JpaRepository<PhotoGallery, Long> {
 
+    List<PhotoGallery> findPhotosGalleryByUserIdOrderByCreatedDesc(String userId);
 }
