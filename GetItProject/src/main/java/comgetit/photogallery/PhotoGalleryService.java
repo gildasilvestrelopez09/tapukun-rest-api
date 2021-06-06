@@ -6,8 +6,11 @@ import comgetit.user.User;
 import comgetit.user.UserRepository;
 import comgetit.user.exception.UserNotFoundException;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +36,38 @@ public class PhotoGalleryService {
             .orElseThrow(UserNotFoundException::new);
          
         PhotoGallery photoGallery = new PhotoGallery(UUID.randomUUID().getMostSignificantBits()
-            ,photoGalleryCreationDTO.getDescription()
-            , user, new Date(), photoGalleryCreationDTO.getImage());
+            ,photoGalleryCreationDTO.getDescription(), user, new Date()
+            ,photoGalleryCreationDTO.getImage()
+            ,photoGalleryCreationDTO.getPostId());
         return photoGalleryRepository.save(photoGallery);
     }
 
-    public List<PhotoGalleryDTO> getPhotosGalleryByUserId(Long userId) {
-   
-        return photoGalleryRepository.findPhotosGalleryByUserIdOrderByCreatedDesc(userId)
-            .stream().map(PhotoGalleryDTO::new)
-            .collect(Collectors.toList());
+    public List<List<PhotoGalleryDTO>> getPhotosGalleryByUserId(Long userId) {
+    	List<List<PhotoGalleryDTO>> answer = new ArrayList<List<PhotoGalleryDTO>>();
+    	List<PhotoGalleryDTO> photos = new ArrayList<PhotoGalleryDTO>();
+    	
+    	List<String> postsId = new ArrayList<String>();
+    	
+        photos = photoGalleryRepository.findPhotosGalleryByUserIdOrderByCreatedDesc(userId)
+                .stream().map(PhotoGalleryDTO::new)
+                .collect(Collectors.toList());
+        
+        for(PhotoGalleryDTO photo : photos) {
+        	postsId.add(photo.getPostId());
+        }
+        
+        Set<String> posts = new HashSet<String>(postsId);
+        
+        for(String postId : posts) {
+        	answer.add(getPhotosGalleryByPostId(postId, photos));
+        	}
+        return answer;
     }
+
+	public List<PhotoGalleryDTO> getPhotosGalleryByPostId(String postId, List<PhotoGalleryDTO> photos) {
+		List<PhotoGalleryDTO> photosByPostId = new ArrayList<PhotoGalleryDTO>();
+		photosByPostId = photos.stream().filter(photo -> photo.getPostId().compareTo(postId) == 0)
+				.collect(Collectors.toList());
+		return photosByPostId;
+	}
 }

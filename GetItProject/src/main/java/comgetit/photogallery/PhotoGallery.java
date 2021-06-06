@@ -1,7 +1,6 @@
 package comgetit.photogallery;
 import comgetit.user.User;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,15 +22,18 @@ public class PhotoGallery {
     private User user;
 
     private Date created = new Date();
+    
+    private String postId;
 
     protected PhotoGallery() {}
 
-    public PhotoGallery(Long id, String description, User user, Date created, String image) {
+    public PhotoGallery(Long id, String description, User user, Date created, String image, String postId) {
         this.id = id;
         this.description = description;
         this.user = user;
         this.created = created;
         this.image = image.getBytes();
+        this.postId = postId;
     }
 
     public Long getId() {
@@ -52,5 +54,9 @@ public class PhotoGallery {
     
     public byte[] getImage() {
     	return image;
+    }
+    
+    public String getPostId() {
+        return postId;
     }
 }

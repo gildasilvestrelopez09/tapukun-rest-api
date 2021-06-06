@@ -12,13 +12,17 @@ public class PhotoGalleryCreationDTO {
     @NotNull
     private Long userId;
     
+    @NotNull
+    private String postId;
+    
     private String image;
 
     public PhotoGalleryCreationDTO(@NotBlank @Size(min = 10, max = 250) String description,
-        @NotNull Long userId, String image) {
+        @NotNull Long userId, String image, String postId) {
         this.description = description;
         this.image = image;
         this.userId = userId;
+        this.postId = postId;
     }
 
     public String getDescription() {
@@ -27,6 +31,10 @@ public class PhotoGalleryCreationDTO {
 
     public Long getUserId() {
         return userId;
+    }
+    
+    public String getPostId() {
+        return postId;
     }
     
     public String getImage() {

@@ -19,14 +19,19 @@ public class PhotoGalleryDTO {
     @NotBlank
     @Size(min = 10, max = 250)
     private String description;
-
+    
+    @NotNull
     private Date createdAt;
+    
+    @NotNull
+    private String postId;
 
     public PhotoGalleryDTO(final PhotoGallery photoGallery) {
         this.photoGalleryId = photoGallery.getId();
         this.description = photoGallery.getDescription();
         this.image = new String(photoGallery.getImage(), StandardCharsets.UTF_8);
         this.createdAt = photoGallery.getCreated();
+        this.postId = photoGallery.getPostId();
     }
 
     public Long getPhotoGalleryId() {
@@ -43,5 +48,9 @@ public class PhotoGalleryDTO {
     
     public String getImage() {
     	return image;
+    }
+    
+    public String getPostId() {
+    	return postId;
     }
 }
