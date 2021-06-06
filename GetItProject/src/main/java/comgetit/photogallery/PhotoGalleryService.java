@@ -69,4 +69,10 @@ public class PhotoGalleryService {
         }
         return postsId;
 	}
+	
+	public List<PhotoGalleryDTO> getPhotosGalleryByPost(String postId) {
+		return  photoGalleryRepository.findPhotosGalleryByPostIdOrderByCreatedDesc(postId)
+                .stream().map(PhotoGalleryDTO::new)
+                .collect(Collectors.toList());
+	}
 }

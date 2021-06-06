@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 public interface PhotoGalleryRepository extends JpaRepository<PhotoGallery, Long> {
 
     List<PhotoGallery> findPhotosGalleryByUserIdOrderByCreatedDesc(Long userId);
+    
+    List<PhotoGallery> findPhotosGalleryByPostIdOrderByCreatedDesc(String postId);
 }

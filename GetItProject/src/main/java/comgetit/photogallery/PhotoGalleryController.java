@@ -40,4 +40,9 @@ public class PhotoGalleryController {
     public List<List<PhotoGalleryDTO>> getPhotosGalleryByUserId(@PathVariable Long id) {
         return photoGalleryService.getPhotosGalleryByUserId(id);
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/photos-gallery-post/{id}")    
+    public List<PhotoGalleryDTO> getPhotosGalleryByPostId(@PathVariable String id) {
+        return photoGalleryService.getPhotosGalleryByPost(id);
+    }
 }
