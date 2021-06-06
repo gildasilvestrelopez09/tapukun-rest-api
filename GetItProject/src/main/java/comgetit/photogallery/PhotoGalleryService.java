@@ -44,9 +44,7 @@ public class PhotoGalleryService {
 
     public List<List<PhotoGalleryDTO>> getPhotosGalleryByUserId(Long userId) {
     	List<List<PhotoGalleryDTO>> answer = new ArrayList<List<PhotoGalleryDTO>>();
-    	List<PhotoGalleryDTO> photos = new ArrayList<PhotoGalleryDTO>();
-    	
-        photos = photoGalleryRepository.findPhotosGalleryByUserIdOrderByCreatedDesc(userId)
+    	List<PhotoGalleryDTO> photos = photoGalleryRepository.findPhotosGalleryByUserIdOrderByCreatedDesc(userId)
                 .stream().map(PhotoGalleryDTO::new)
                 .collect(Collectors.toList());
         
@@ -59,10 +57,9 @@ public class PhotoGalleryService {
     }
 
 	private List<PhotoGalleryDTO> getPhotosGalleryByPostId(String postId, List<PhotoGalleryDTO> photos) {
-		List<PhotoGalleryDTO> photosByPostId = new ArrayList<PhotoGalleryDTO>();
-		photosByPostId = photos.stream().filter(photo -> photo.getPostId().compareTo(postId) == 0)
+		return  photos.stream()
+				.filter(photo -> photo.getPostId().compareTo(postId) == 0)
 				.collect(Collectors.toList());
-		return photosByPostId;
 	}
 	
 	private List<String> getPostsId(List<PhotoGalleryDTO> photos) {
