@@ -46,17 +46,11 @@ public class PhotoGalleryService {
     	List<List<PhotoGalleryDTO>> answer = new ArrayList<List<PhotoGalleryDTO>>();
     	List<PhotoGalleryDTO> photos = new ArrayList<PhotoGalleryDTO>();
     	
-    	List<String> postsId = new ArrayList<String>();
-    	
         photos = photoGalleryRepository.findPhotosGalleryByUserIdOrderByCreatedDesc(userId)
                 .stream().map(PhotoGalleryDTO::new)
                 .collect(Collectors.toList());
         
-        for(PhotoGalleryDTO photo : photos) {
-        	postsId.add(photo.getPostId());
-        }
-        
-        Set<String> posts = new HashSet<String>(postsId);
+        Set<String> posts = new HashSet<String>(getPostsId(photos));
         
         for(String postId : posts) {
         	answer.add(getPhotosGalleryByPostId(postId, photos));
@@ -64,10 +58,18 @@ public class PhotoGalleryService {
         return answer;
     }
 
-	public List<PhotoGalleryDTO> getPhotosGalleryByPostId(String postId, List<PhotoGalleryDTO> photos) {
+	private List<PhotoGalleryDTO> getPhotosGalleryByPostId(String postId, List<PhotoGalleryDTO> photos) {
 		List<PhotoGalleryDTO> photosByPostId = new ArrayList<PhotoGalleryDTO>();
 		photosByPostId = photos.stream().filter(photo -> photo.getPostId().compareTo(postId) == 0)
 				.collect(Collectors.toList());
 		return photosByPostId;
+	}
+	
+	private List<String> getPostsId(List<PhotoGalleryDTO> photos) {
+		List<String> postsId = new ArrayList<String>();
+        for(PhotoGalleryDTO photo : photos) {
+        	postsId.add(photo.getPostId());
+        }
+        return postsId;
 	}
 }
