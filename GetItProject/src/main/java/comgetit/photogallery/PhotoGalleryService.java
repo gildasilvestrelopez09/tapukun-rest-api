@@ -51,16 +51,10 @@ public class PhotoGalleryService {
         Set<String> posts = new HashSet<String>(getPostsId(photos));
         
         for(String postId : posts) {
-        	answer.add(getPhotosGalleryByPostId(postId, photos));
+        	answer.add(getPhotosGalleryByPostId(postId));
         	}
         return answer;
     }
-
-	private List<PhotoGalleryDTO> getPhotosGalleryByPostId(String postId, List<PhotoGalleryDTO> photos) {
-		return  photos.stream()
-				.filter(photo -> photo.getPostId().compareTo(postId) == 0)
-				.collect(Collectors.toList());
-	}
 	
 	private List<String> getPostsId(List<PhotoGalleryDTO> photos) {
 		List<String> postsId = new ArrayList<String>();
@@ -70,7 +64,7 @@ public class PhotoGalleryService {
         return postsId;
 	}
 	
-	public List<PhotoGalleryDTO> getPhotosGalleryByPost(String postId) {
+	public List<PhotoGalleryDTO> getPhotosGalleryByPostId(String postId) {
 		return  photoGalleryRepository.findPhotosGalleryByPostIdOrderByCreatedDesc(postId)
                 .stream().map(PhotoGalleryDTO::new)
                 .collect(Collectors.toList());

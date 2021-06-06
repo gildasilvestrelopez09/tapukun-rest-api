@@ -2,16 +2,13 @@ package comgetit.photogallery;
 
 import comgetit.photogallery.dto.PhotoGalleryCreationDTO;
 import comgetit.photogallery.dto.PhotoGalleryDTO;
-import comgetit.user.User;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +40,7 @@ public class PhotoGalleryController {
     
     @RequestMapping(method = RequestMethod.GET, value = "/photos-gallery-post/{id}")    
     public List<PhotoGalleryDTO> getPhotosGalleryByPostId(@PathVariable String id) {
-        return photoGalleryService.getPhotosGalleryByPost(id);
+        return photoGalleryService.getPhotosGalleryByPostId(id);
     }
+    
 }
