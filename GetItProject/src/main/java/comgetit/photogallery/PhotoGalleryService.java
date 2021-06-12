@@ -25,20 +25,20 @@ public class PhotoGalleryService {
     private final UserRepository userRepository;
 
     @Autowired
-    public PhotoGalleryService(PhotoGalleryRepository photoGalleryRepository
-        , UserRepository userRepository) {
+    public PhotoGalleryService(PhotoGalleryRepository photoGalleryRepository, 
+    		UserRepository userRepository) {
         this.photoGalleryRepository = photoGalleryRepository;
         this.userRepository = userRepository;
     }
 
     public PhotoGallery createPhotoGallery(final PhotoGalleryCreationDTO photoGalleryCreationDTO) {
         User user = userRepository.findById(photoGalleryCreationDTO.getUserId())
-            .orElseThrow(UserNotFoundException::new);
+        		.orElseThrow(UserNotFoundException::new);
          
-        PhotoGallery photoGallery = new PhotoGallery(UUID.randomUUID().getMostSignificantBits()
-            ,photoGalleryCreationDTO.getDescription(), user, new Date()
-            ,photoGalleryCreationDTO.getImage()
-            ,photoGalleryCreationDTO.getPostId());
+        PhotoGallery photoGallery = new PhotoGallery(UUID.randomUUID().getMostSignificantBits(),
+        	photoGalleryCreationDTO.getDescription(), user, new Date(),
+            photoGalleryCreationDTO.getImage(),
+            photoGalleryCreationDTO.getPostId());
         return photoGalleryRepository.save(photoGallery);
     }
 
