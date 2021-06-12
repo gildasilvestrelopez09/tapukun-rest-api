@@ -2,6 +2,8 @@ package comgetit.publication.dto;
 
 import comgetit.publication.Publication;
 import comgetit.user.dto.UserDTO;
+
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,7 +25,7 @@ public class PublicationDTO {
     @Size(min = 10, max = 50)
     private String address;
     
-    private byte[] image;
+    private String image;
 
     private int requiredTime;
 
@@ -44,7 +46,7 @@ public class PublicationDTO {
         this.address = publication.getAddress();
         this.requiredTime = publication.getTimeRequiredOrOffered();
         this.description = publication.getDescription();
-        this.image = publication.getImage();
+        this.image = new String(publication.getImage(), StandardCharsets.UTF_8);
         this.createdAt = publication.getCreated();
         this.user = new UserDTO(publication.getUser().getFirstname(),
             publication.getUser().getLastname(),
@@ -90,7 +92,7 @@ public class PublicationDTO {
         return createdAt;
     }
     
-    public byte[] getImage() {
+    public String getImage() {
     	return image;
     }
 }

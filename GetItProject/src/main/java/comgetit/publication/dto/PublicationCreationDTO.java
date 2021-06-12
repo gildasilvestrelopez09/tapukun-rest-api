@@ -32,13 +32,13 @@ public class PublicationCreationDTO {
     @NotNull
     private Long userId;
     
-    private byte[] image;
+    private String image;
 
     public PublicationCreationDTO(@NotBlank String typePublication,
         @NotNull Long workAreaId, int tariff,
         @Size(min = 10, max = 50) String address, int timeRequiredOrOffered,
         @NotBlank @Size(min = 10, max = 100) String description,
-        @NotNull Long userId, byte[] image) {
+        @NotNull Long userId, String image) {
         this.typePublication = typePublication;
         this.workAreaId = workAreaId;
         this.tariff = tariff;
@@ -77,7 +77,7 @@ public class PublicationCreationDTO {
         return userId;
     }
     
-    public byte[] getImage() {
+    public String getImage() {
     	return image;
     }
 }

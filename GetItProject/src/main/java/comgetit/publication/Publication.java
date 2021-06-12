@@ -43,7 +43,7 @@ public class Publication {
 
     public Publication(Long id, PublicationType publicationType, WorkArea workArea,
         Integer tariff, String address, Integer timeRequiredOrOffered, String description,
-        User user, Date created, byte[] image) {
+        User user, Date created, String image) {
         this.id = id;
         this.publicationType = publicationType;
         this.workArea = workArea;
@@ -53,7 +53,7 @@ public class Publication {
         this.description = description;
         this.user = user;
         this.created = created;
-        this.image = image;
+        this.image = image.getBytes();
     }
 
     public Long getId() {
