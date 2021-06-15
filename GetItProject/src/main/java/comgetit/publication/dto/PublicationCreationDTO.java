@@ -31,18 +31,21 @@ public class PublicationCreationDTO {
 
     @NotNull
     private Long userId;
+    
+    private String image;
 
     public PublicationCreationDTO(@NotBlank String typePublication,
         @NotNull Long workAreaId, int tariff,
         @Size(min = 10, max = 50) String address, int timeRequiredOrOffered,
         @NotBlank @Size(min = 10, max = 100) String description,
-        @NotNull Long userId) {
+        @NotNull Long userId, String image) {
         this.typePublication = typePublication;
         this.workAreaId = workAreaId;
         this.tariff = tariff;
         this.address = address;
         this.timeRequiredOrOffered = timeRequiredOrOffered;
         this.description = description;
+        this.image = image;
         this.userId = userId;
     }
 
@@ -72,5 +75,9 @@ public class PublicationCreationDTO {
 
     public Long getUserId() {
         return userId;
+    }
+    
+    public String getImage() {
+    	return image;
     }
 }
