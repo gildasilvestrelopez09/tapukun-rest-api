@@ -49,11 +49,10 @@ public class PublicationDTO {
         this.image = new String(publication.getImage(), StandardCharsets.UTF_8);
         this.createdAt = publication.getCreated();
         this.user = new UserDTO(publication.getUser().getFirstname(),
-            publication.getUser().getLastname(),
-            publication.getUser().getPhone(), publication.getUser().getBirthdate(),
-            publication.getUser().getAddress(), publication.getUser().getWorkArea().getId(),
+            publication.getUser().getLastname(), publication.getUser().getPhone(),
+            publication.getUser().getBirthdate(), publication.getUser().getAddress(), publication.getUser().getWorkArea().getId(),
             publication.getUser().getScore(), publication.getUser().getEmail(),
-            publication.getUser().getAddress());
+            publication.getUser().getAddress(), new String(publication.getUser().getImage() , StandardCharsets.UTF_8));
     }
 
     public Long getAdId() {

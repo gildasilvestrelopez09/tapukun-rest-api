@@ -53,6 +53,8 @@ public class User {
     @Column
     @JsonIgnore
     private String password;
+    
+    private byte[] image;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -60,7 +62,7 @@ public class User {
 
     public User(Long id, String firstname, String lastname, String phone,
         Date birthdate, String address, WorkArea workArea, int score, String email,
-        String password) {
+        String password, String image) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -72,6 +74,7 @@ public class User {
         this.score = score;
         this.email = email;
         this.password = password;
+        this.image = image.getBytes();
     }
 
     protected User() {
@@ -115,6 +118,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+    
+    public byte[] getImage() {
+    	return image;
     }
 
     public List<Publication> getList() {
