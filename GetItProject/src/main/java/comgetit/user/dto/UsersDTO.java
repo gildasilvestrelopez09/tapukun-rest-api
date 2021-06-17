@@ -1,5 +1,6 @@
 package comgetit.user.dto;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
@@ -37,10 +38,10 @@ public class UsersDTO {
     @Size(max = 50)
     private String email;
     
-    private String image;
+    private byte[] image;
 
     public UsersDTO(Long id, String firstname, String lastname, String phone, Date birthdate,
-                    String address, Long workAreaId, int score, String email, String image) {
+                    String address, Long workAreaId, int score, String email, byte[] image) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -126,11 +127,11 @@ public class UsersDTO {
         this.email = email;
     }
     
-    public String getImage() {
+    public byte[] getImage() {
     	return image;
     }
     
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
     	this.image = image;
     }
 }
