@@ -1,5 +1,6 @@
 package comgetit.user.dto;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
@@ -8,7 +9,7 @@ import javax.validation.constraints.Size;
 
 public class UsersDTO {
 	
-    private Long id;
+    private String id;
 	
     @NotBlank
     @NotNull
@@ -36,9 +37,11 @@ public class UsersDTO {
     @NotNull
     @Size(max = 50)
     private String email;
+    
+    private String image;
 
-    public UsersDTO(Long id, String firstname, String lastname, String phone, Date birthdate,
-                    String address, Long workAreaId, int score, String email) {
+    public UsersDTO(String id, String firstname, String lastname, String phone, Date birthdate,
+                    String address, Long workAreaId, int score, String email, byte[] image) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -49,13 +52,14 @@ public class UsersDTO {
         this.workAreaId = workAreaId;
         this.score = score;
         this.email = email;
+        this.image = new String(image, StandardCharsets.UTF_8);
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -121,5 +125,9 @@ public class UsersDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getImage() {
+    	return image;
     }
 }

@@ -1,5 +1,6 @@
 package comgetit.user;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -31,15 +32,16 @@ public class UserService {
                              userDTO.getFirstname(), userDTO.getLastname(),
                              userDTO.getPhone(), userDTO.getBirthdate(),
                              userDTO.getAddress(), workAreaId, userDTO.getScore(),
-                             userDTO.getEmail(), userDTO.getPassword());
+                             userDTO.getEmail(), userDTO.getPassword(), userDTO.getImage());
         return userRepository.save(user);
     }
 	
     public List<UsersDTO> getAllUsers() {
         return userRepository.findAll().stream()
-            .map(user -> new UsersDTO(user.getId(), user.getFirstname(), 
+            .map(user -> new UsersDTO(user.getId().toString(), user.getFirstname(), 
                  user.getLastname(), user.getPhone(), user.getBirthdate(), 
-                 user.getAddress(), user.getWorkArea().getId(), user.getScore(), user.getEmail()))
+                 user.getAddress(), user.getWorkArea().getId(), user.getScore(), user.getEmail(),
+                 user.getImage().getBytes()))
                  .collect(Collectors.toList());
     }
 

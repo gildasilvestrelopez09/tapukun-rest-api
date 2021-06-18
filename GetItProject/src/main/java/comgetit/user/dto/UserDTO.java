@@ -47,9 +47,11 @@ public class UserDTO {
     @Size(min = 8, max = 50)
     @Pattern(regexp="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$")
     private String password;
+    
+    private String image;
 
     public UserDTO(String firstname, String lastname, String phone, Date birthdate, 
-                   String address, Long workAreaId, int score, String email, String password) {
+                   String address, Long workAreaId, int score, String email, String password, String image) {
         this.firstname = firstname;
         this.lastname = lastname;
 	    this.phone = phone;
@@ -59,6 +61,7 @@ public class UserDTO {
 	    this.score = score;
 	    this.email = email;
         this.password = password;
+        this.image = image;
     }
 
     public String getFirstname() {
@@ -131,5 +134,9 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getImage() {
+    	return image;
     }
 }

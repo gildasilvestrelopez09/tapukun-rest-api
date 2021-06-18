@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import comgetit.publication.Publication;
 import comgetit.workarea.WorkArea;
+
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -53,6 +55,8 @@ public class User {
     @Column
     @JsonIgnore
     private String password;
+    
+    private byte[] image;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -60,7 +64,7 @@ public class User {
 
     public User(Long id, String firstname, String lastname, String phone,
         Date birthdate, String address, WorkArea workArea, int score, String email,
-        String password) {
+        String password, String image) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -72,13 +76,14 @@ public class User {
         this.score = score;
         this.email = email;
         this.password = password;
+        this.image = image.getBytes();
     }
 
     protected User() {
     }
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     public String getFirstname() {
@@ -115,6 +120,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+    
+    public String getImage() {
+    	return new String(image , StandardCharsets.UTF_8);
     }
 
     public List<Publication> getList() {
