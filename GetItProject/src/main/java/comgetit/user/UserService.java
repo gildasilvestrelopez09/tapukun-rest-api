@@ -41,7 +41,7 @@ public class UserService {
             .map(user -> new UsersDTO(user.getId().toString(), user.getFirstname(), 
                  user.getLastname(), user.getPhone(), user.getBirthdate(), 
                  user.getAddress(), user.getWorkArea().getId(), user.getScore(), user.getEmail(),
-                 user.getImage()))
+                 user.getImage().getBytes()))
                  .collect(Collectors.toList());
     }
 

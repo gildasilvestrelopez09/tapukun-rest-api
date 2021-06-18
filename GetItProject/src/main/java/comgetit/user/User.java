@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import comgetit.publication.Publication;
 import comgetit.workarea.WorkArea;
+
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -120,8 +122,8 @@ public class User {
         return password;
     }
     
-    public byte[] getImage() {
-    	return image;
+    public String getImage() {
+    	return new String(image , StandardCharsets.UTF_8);
     }
 
     public List<Publication> getList() {
