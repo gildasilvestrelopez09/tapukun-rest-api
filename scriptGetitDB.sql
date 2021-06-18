@@ -1,4 +1,4 @@
-﻿CREATE USER 'getit'@'localhost' IDENTIFIED BY 'getit';
+CREATE USER 'getit'@'localhost' IDENTIFIED BY 'getit';
 GRANT ALL PRIVILEGES ON * . * TO 'getit'@'localhost';
 
 USE getitdb;
@@ -11,6 +11,7 @@ DATETIME(6) DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6);
 
 ALTER TABLE publication MODIFY image MEDIUMBLOB;
 ALTER TABLE photo_gallery MODIFY image MEDIUMBLOB;
+ALTER TABLE user MODIFY image MEDIUMBLOB;
 
 INSERT INTO work_area(id, name)
 VALUES (1, 'Limpieza');
