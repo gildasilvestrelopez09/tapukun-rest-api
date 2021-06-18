@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 public class UsersDTO {
 	
-    private Long id;
+    private String id;
 	
     @NotBlank
     @NotNull
@@ -40,7 +40,7 @@ public class UsersDTO {
     
     private byte[] image;
 
-    public UsersDTO(Long id, String firstname, String lastname, String phone, Date birthdate,
+    public UsersDTO(String id, String firstname, String lastname, String phone, Date birthdate,
                     String address, Long workAreaId, int score, String email, byte[] image) {
         super();
         this.id = id;
@@ -55,11 +55,11 @@ public class UsersDTO {
         this.image = image;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
