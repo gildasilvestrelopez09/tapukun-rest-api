@@ -38,7 +38,7 @@ public class UsersDTO {
     @Size(max = 50)
     private String email;
     
-    private byte[] image;
+    private String image;
 
     public UsersDTO(String id, String firstname, String lastname, String phone, Date birthdate,
                     String address, Long workAreaId, int score, String email, byte[] image) {
@@ -52,7 +52,7 @@ public class UsersDTO {
         this.workAreaId = workAreaId;
         this.score = score;
         this.email = email;
-        this.image = image;
+        this.image = new String(image, StandardCharsets.UTF_8);
     }
 
     public String getId() {
@@ -127,11 +127,7 @@ public class UsersDTO {
         this.email = email;
     }
     
-    public byte[] getImage() {
+    public String getImage() {
     	return image;
-    }
-    
-    public void setImage(byte[] image) {
-    	this.image = image;
     }
 }
