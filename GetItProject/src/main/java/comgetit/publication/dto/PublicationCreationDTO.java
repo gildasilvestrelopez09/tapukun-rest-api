@@ -19,7 +19,6 @@ public class PublicationCreationDTO {
 
     private int tariff;
 
-    @Pattern(regexp = "^$|^(\\w+){10}$", message = "must be a min size of 10")
     @Length(max = 50)
     private String address;
 
