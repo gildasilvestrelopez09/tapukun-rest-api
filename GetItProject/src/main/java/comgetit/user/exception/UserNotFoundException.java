@@ -4,7 +4,7 @@ import comgetit.exception.NotFoundException;
 
 public class UserNotFoundException extends NotFoundException {
 
-    private static final String MESSAGE = "The user doesn\'t exist";
+    private static final String MESSAGE = "El usuario no existe";
 
     public UserNotFoundException() {
         super(MESSAGE);

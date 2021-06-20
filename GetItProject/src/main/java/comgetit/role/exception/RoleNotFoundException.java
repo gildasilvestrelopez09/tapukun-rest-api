@@ -4,7 +4,7 @@ import comgetit.exception.NotFoundException;
 
 public class RoleNotFoundException extends NotFoundException {
 
-    private static final String MESSAGE = "The %s role doesn\'t exist";
+    private static final String MESSAGE = "El %s role no existe";
 
     public RoleNotFoundException(String role) {
         super(String.format(MESSAGE, role));
