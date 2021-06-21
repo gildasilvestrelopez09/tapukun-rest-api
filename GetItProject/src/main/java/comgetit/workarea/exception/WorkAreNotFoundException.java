@@ -4,7 +4,7 @@ import comgetit.exception.NotFoundException;
 
 public class WorkAreNotFoundException extends NotFoundException {
 
-    private static final String MESSAGE = "The work area doesn\'t exist";
+    private static final String MESSAGE = "El area de trabajo no existe";
 
     public WorkAreNotFoundException() {
         super(MESSAGE);

@@ -1,13 +1,10 @@
 package comgetit.publication.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 
 public class PublicationCreationDTO {
 
@@ -19,13 +16,18 @@ public class PublicationCreationDTO {
 
     private int tariff;
 
-    @Length(max = 50)
+    @Pattern(regexp = "^$|^(\\w+){10}$", message = "must be a min size of 10")
+    @Length(max = 150)
+<<<<<<< HEAD
+
+=======
+>>>>>>> 50fca9ed5f0dd333513663f69f4ffe3aea210324
     private String address;
 
     private int timeRequiredOrOffered;
 
     @NotBlank
-    @Size(min = 10, max = 100)
+    @Size(min = 10, max = 250)
     private String description;
 
     @NotNull
