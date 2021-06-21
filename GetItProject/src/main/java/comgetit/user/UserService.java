@@ -47,8 +47,8 @@ public class UserService implements UserDetailsService {
                              userDTO.getFirstname(), userDTO.getLastname(),
                              userDTO.getPhone(), userDTO.getBirthdate(),
                              userDTO.getAddress(), workAreaId, userDTO.getScore(),
-                             userDTO.getEmail(), userDTO.getPassword(), userDTO.getImage(),
-                             List.of(role));
+                             userDTO.getEmail(), passwordEncoder.encode(userDTO.getPassword()),
+                             userDTO.getImage(), List.of(role));
         return userRepository.save(user);
     }
 
