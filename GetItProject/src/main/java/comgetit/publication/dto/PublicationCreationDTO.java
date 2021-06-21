@@ -18,6 +18,7 @@ public class PublicationCreationDTO {
 
     @Pattern(regexp = "^$|^(\\w+){10}$", message = "must be a min size of 10")
     @Length(max = 150)
+
     private String address;
 
     private int timeRequiredOrOffered;

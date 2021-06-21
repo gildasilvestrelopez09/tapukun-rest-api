@@ -78,11 +78,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private void invalidCredentials(HttpServletResponse response) {
         try {
-<<<<<<< HEAD
-            setUpResponse(response, "message", "El correo o password son incorrectos",
-=======
-            setUpResponse(response, Map.of("message", "Correo or el password son incorrectos"),
->>>>>>> ec18f63861f0e03f0076f9d9ed15d5506e51b6ea
+            setUpResponse(response, "message", "El correo o el password son incorrectos",
                     HttpStatus.FORBIDDEN.value());
         } catch (IOException exception) {
             throw new RuntimeException();
