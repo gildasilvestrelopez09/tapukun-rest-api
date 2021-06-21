@@ -17,13 +17,13 @@ public class PublicationCreationDTO {
     private int tariff;
 
     @Pattern(regexp = "^$|^(\\w+){10}$", message = "must be a min size of 10")
-    @Length(max = 50)
+    @Length(max = 150)
     private String address;
 
     private int timeRequiredOrOffered;
 
     @NotBlank
-    @Size(min = 10, max = 100)
+    @Size(min = 10, max = 250)
     private String description;
 
     @NotNull

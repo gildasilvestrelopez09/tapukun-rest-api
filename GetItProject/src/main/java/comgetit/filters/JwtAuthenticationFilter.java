@@ -72,23 +72,28 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject(((User) auth.getPrincipal()).getEmail())
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC512(this.secret.getBytes()));
-        setUpResponse(response, "token", token, HttpStatus.OK.value());
+        User user = (User) auth.getPrincipal();
+        setUpResponse(response, Map.of("token", token, "id", user.getId()), HttpStatus.OK.value());
     }
 
     private void invalidCredentials(HttpServletResponse response) {
         try {
+<<<<<<< HEAD
             setUpResponse(response, "message", "El correo o password son incorrectos",
+=======
+            setUpResponse(response, Map.of("message", "Correo or el password son incorrectos"),
+>>>>>>> ec18f63861f0e03f0076f9d9ed15d5506e51b6ea
                     HttpStatus.FORBIDDEN.value());
         } catch (IOException exception) {
             throw new RuntimeException();
         }
     }
 
-    private void setUpResponse(final HttpServletResponse res, final String key, final String value, Integer httpStatus)
+    private void setUpResponse(final HttpServletResponse res, final Map<String, Object> values, Integer httpStatus)
             throws IOException {
         res.setStatus(httpStatus);
         res.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        res.getWriter().write(new ObjectMapper().writeValueAsString(Map.of(key, value)));
+        res.getWriter().write(new ObjectMapper().writeValueAsString(values));
         res.getWriter().flush();
     }
 

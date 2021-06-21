@@ -49,7 +49,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             chain.doFilter(request, response);
         } catch (TokenExpiredException exception) {
-            setUpResponse("Your session has expired", HttpStatus.FORBIDDEN.value(), response);
+            setUpResponse("Su session ha expirado", HttpStatus.FORBIDDEN.value(), response);
         } catch (InvalidUserTokenException exception) {
             setUpResponse("No puede acceder a este recurso", HttpStatus.FORBIDDEN.value(), response);
         }
