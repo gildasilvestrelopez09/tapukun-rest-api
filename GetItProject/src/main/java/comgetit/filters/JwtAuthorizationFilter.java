@@ -51,7 +51,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         } catch (TokenExpiredException exception) {
             setUpResponse("Your session has expired", HttpStatus.FORBIDDEN.value(), response);
         } catch (InvalidUserTokenException exception) {
-            setUpResponse("Cannot access this resource", HttpStatus.FORBIDDEN.value(), response);
+            setUpResponse("No puede acceder a este recurso", HttpStatus.FORBIDDEN.value(), response);
         }
     }
 
