@@ -44,8 +44,7 @@ public class UserDTO {
     private String email;
 
     @NotNull
-    @Size(min = 8, max = 50)
-    @Pattern(regexp="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$")
+    @Size(min = 8, max = 128)
     private String password;
     
     private String image;
