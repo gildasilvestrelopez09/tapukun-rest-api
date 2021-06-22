@@ -75,7 +75,7 @@ INSERT INTO user_work_area (user_id, work_area_id)
 VALUES (5, 1);
 
 INSERT INTO rating (rated_user, rater_user, score)
-VALUES (1, 1);
+VALUES (1, 3, 4);
 INSERT INTO rating (rated_user, rater_user, score)
 VALUES (1, 2, 5);
 INSERT INTO rating (rated_user, rater_user, score)
