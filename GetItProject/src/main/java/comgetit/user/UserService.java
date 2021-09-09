@@ -39,16 +39,14 @@ public class UserService implements UserDetailsService {
     }
 
 	public User createUser(final UserDTO userDTO) {
-	    WorkArea workAreaId = workAreaRepository.findById(userDTO.getWorkAreaId())
-            .orElseThrow(WorkAreNotFoundException::new);
 	    Role role = roleRepository.findByName(ADMIN)
             .orElseThrow(() -> new RoleNotFoundException(ADMIN));
         User user = new User(UUID.randomUUID().getMostSignificantBits(),
                              userDTO.getFirstname(), userDTO.getLastname(),
                              userDTO.getPhone(), userDTO.getBirthdate(),
-                             userDTO.getAddress(), workAreaId, userDTO.getScore(),
+                             userDTO.getAddress(), userDTO.getScore(),
                              userDTO.getEmail(), passwordEncoder.encode(userDTO.getPassword()),
-                             userDTO.getImage(), List.of(role));
+                             List.of(role));
         return userRepository.save(user);
     }
 
@@ -56,8 +54,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll().stream()
             .map(user -> new UsersDTO(user.getId().toString(), user.getFirstname(), 
                  user.getLastname(), user.getPhone(), user.getBirthdate(), 
-                 user.getAddress(), user.getWorkArea().getId(), user.getScore(), user.getEmail(),
-                 user.getImage().getBytes()))
+                 user.getAddress(), user.getScore(), user.getEmail()))
                  .collect(Collectors.toList());
     }
 

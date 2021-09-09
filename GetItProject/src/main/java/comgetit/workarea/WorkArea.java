@@ -21,10 +21,6 @@ public class WorkArea implements Serializable {
     @JsonIgnore
     private List<Publication> publicationList;
 
-    @OneToMany(mappedBy = "workArea")
-    @JsonIgnore
-    private List<User> users;
-
     protected WorkArea() {
     }
 
@@ -33,7 +29,6 @@ public class WorkArea implements Serializable {
         this.id = id;
         this.name = name;
         this.publicationList = publicationList;
-        this.users = users;
     }
 
     public Long getId() {
@@ -46,9 +41,5 @@ public class WorkArea implements Serializable {
 
     public List<Publication> getPublicationList() {
         return publicationList;
-    }
-
-    public List<User> getUsers() {
-        return users;
     }
 }

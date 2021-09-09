@@ -13,6 +13,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -30,6 +31,7 @@ public class User implements UserDetails {
 
     @Id
     @Column
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -48,9 +50,6 @@ public class User implements UserDetails {
 
     @Column
     private String address;
-
-    @ManyToOne
-    private WorkArea workArea;
  
     @Column
     private int score;
@@ -61,8 +60,6 @@ public class User implements UserDetails {
     @Column
     @JsonIgnore
     private String password;
-    
-    private byte[] image;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -74,8 +71,8 @@ public class User implements UserDetails {
     private List<Role> authorities;
 
     public User(Long id, String firstname, String lastname, String phone,
-        Date birthdate, String address, WorkArea workArea, int score, String email,
-        String password, String image, List<Role> authorities) {
+        Date birthdate, String address, int score, String email,
+        String password, List<Role> authorities) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -83,11 +80,9 @@ public class User implements UserDetails {
         this.phone = phone;
         this.birthdate = birthdate;
         this.address = address;
-        this.workArea = workArea;
         this.score = score;
         this.email = email;
         this.password = password;
-        this.image = image.getBytes();
         this.authorities = authorities;
     }
 
@@ -117,10 +112,6 @@ public class User implements UserDetails {
     public String getAddress() {
         return address;
     }
-
-    public WorkArea getWorkArea() {
-        return workArea;
-    }
     
     public int getScore() {
         return score;
@@ -137,10 +128,6 @@ public class User implements UserDetails {
 
     public String getPassword() {
         return password;
-    }
-    
-    public String getImage() {
-    	return new String(image , StandardCharsets.UTF_8);
     }
 
     @Override
